@@ -1,0 +1,14 @@
+<div class="newsarticles">
+  <h1>News</h1>
+  <% @newsarticles.each do |article| %>
+    <article>
+      <header>
+        <h2><%= article.title %></h2>    
+      </header>
+      <%= simple_format(article.body) %>
+      <aside>
+        <p><%= image_tag article.newsarticle_pic.url(:medium) %></p>
+      </aside>
+    </article>
+  <% end %>
+</div>
