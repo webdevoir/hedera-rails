@@ -9,4 +9,15 @@ feature "newsarticles" do
     expect(page).to have_content(newsarticle.body)
     expect(page).to have_css("img[src*='newsarticle_pic']")
   end
+
+  scenario "guest views newsarticle details" do
+    visit newsarticles_path
+    click_link newsarticle.title
+    expect(current_path).to eq newsarticle_path(newsarticle)
+    expect(page).to have_content(newsarticle.title)
+    expect(page).to have_content(newsarticle.body)
+    expect(page).to have_content(newsarticle.link)
+    expect(page).to have_css("img[src*='newsarticle_pic']")
+    expect(page).to have_css("p time", newsarticle.date)
+  end
 end

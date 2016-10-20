@@ -1,0 +1,24 @@
+<article class="news-item">
+  <div class="breadcrumb">
+    <ul>
+      <li><a href="/news.html">News</a> > </li>
+      <li><%= @newsarticle.title %></li>
+    </ul>
+  </div>
+  <header class="pageheader">
+    <h1><%= @newsarticle.title %></h1>
+  </header>
+  <footer class="article">
+    <p><time><%= @newsarticle.date.strftime('%d %B %Y') %></time><br>
+    <i class="fa fa-map-marker"></i>Aston University,Birmingham<br>
+    <i class="fa fa-download"></i><a href="#">Program</a>
+    </p>
+  </footer>
+  <div class="content">
+    <%= simple_format(@newsarticle.body) %>
+    <p>link: <%= link_to @newsarticle.link %></p>
+  </div><!-- .content -->
+  <aside>
+    <%= image_tag @newsarticle.newsarticle_pic(:medium) %>
+  </aside>
+</article>

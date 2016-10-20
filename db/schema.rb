@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161019134547) do
+ActiveRecord::Schema.define(version: 20161020081829) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,8 @@ ActiveRecord::Schema.define(version: 20161019134547) do
     t.string   "newsarticle_pic_content_type"
     t.integer  "newsarticle_pic_file_size"
     t.datetime "newsarticle_pic_updated_at"
+    t.string   "link"
+    t.date     "date"
   end
 
   create_table "users", force: :cascade do |t|
