@@ -1,0 +1,25 @@
+<%= form_for @newsarticle, url: newsarticles_path, html: { multipart: true } do |f| %>
+  <div>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+  </div>
+  <div>
+    <%= f.label :body %>
+    <%= f.text_area :body %>
+  </div>
+  <div>
+    <%= f.label :date %>
+    <%= f.date_field :date %>
+  </div>
+  <div>
+    <%= f.label :link %>
+    <%= f.text_field :link %>
+  </div>
+  <div>
+    <%= f.label :newsarticle_pic %>
+    <%= f.file_field :newsarticle_pic %>
+  </div>
+  <div>
+    <%= f.submit %>
+  </div>
+<% end %>

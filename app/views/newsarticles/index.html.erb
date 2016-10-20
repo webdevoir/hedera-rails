@@ -1,5 +1,6 @@
 <div class="newsarticles">
   <h1>News</h1>
+  <p><%= link_to "Create newsarticle", new_newsarticle_path %></p>
   <% @newsarticles.each do |article| %>
     <article>
       <header>

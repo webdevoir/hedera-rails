@@ -10,7 +10,7 @@
   </header>
   <footer class="article">
     <p><time><%= @newsarticle.date.strftime('%d %B %Y') %></time><br>
-    <i class="fa fa-map-marker"></i>Aston University,Birmingham<br>
+    <i class="fa fa-map-marker"></i><%= @newsarticle.location %><br>
     <i class="fa fa-download"></i><a href="#">Program</a>
     </p>
   </footer>
