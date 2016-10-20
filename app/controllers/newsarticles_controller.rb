@@ -44,6 +44,6 @@ class NewsarticlesController < ApplicationController
   private
 
   def newsarticle_params
-    params.required(:newsarticle).permit(:title, :body, :date, :link, :newsarticle_pic)
+    params.required(:newsarticle).permit(:title, :body, :date, :link, :newsarticle_pic, :newsarticle_doc)
   end
 end

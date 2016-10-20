@@ -1,7 +1,7 @@
 <article class="news-item">
   <div class="breadcrumb">
     <ul>
-      <li><a href="/news.html">News</a> > </li>
+      <li><%= link_to "News", newsarticles_path %></li>
       <li><%= @newsarticle.title %></li>
     </ul>
   </div>
@@ -9,14 +9,17 @@
     <h1><%= @newsarticle.title %></h1>
   </header>
   <footer class="article">
-    <p><time><%= @newsarticle.date.strftime('%d %B %Y') %></time><br>
+    <p>
+    <% if @newsarticle.date.present? %>
+    <time>
+    <%= @newsarticle.date.strftime('%d %B %Y') %></time><br>
+    <% end %>
     <i class="fa fa-map-marker"></i><%= @newsarticle.location %><br>
-    <i class="fa fa-download"></i><a href="#">Program</a>
-    </p>
+    <i class="fa fa-download"></i><%= link_to "Download", @newsarticle.newsarticle_doc.url %></p>
   </footer>
   <div class="content">
     <%= simple_format(@newsarticle.body) %>
-    <p>link: <%= link_to @newsarticle.link %></p>
+    <p>link: <%= link_to @newsarticle.link, @newsarticle.link %></p>
   </div><!-- .content -->
   <aside>
     <%= image_tag @newsarticle.newsarticle_pic.url %>
