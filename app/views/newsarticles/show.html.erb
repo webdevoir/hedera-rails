@@ -19,7 +19,7 @@
     <p>link: <%= link_to @newsarticle.link %></p>
   </div><!-- .content -->
   <aside>
-    <%= image_tag @newsarticle.newsarticle_pic(:medium) %>
+    <%= image_tag @newsarticle.newsarticle_pic.url %>
   </aside>
 </article>
 <p><%= link_to "Edit newsarticle", edit_newsarticle_path(@newsarticle) %> &nbsp; <%= link_to "Delete", newsarticle_path(@newsarticle), method: :delete, data: { confirm: "Are you sure?" } %></p>
