@@ -22,3 +22,4 @@
     <%= image_tag @newsarticle.newsarticle_pic(:medium) %>
   </aside>
 </article>
+<p><%= link_to "Edit newsarticle", edit_newsarticle_path(@newsarticle) %> &nbsp; <%= link_to "Delete", newsarticle_path(@newsarticle), method: :delete, data: { confirm: "Are you sure?" } %></p>

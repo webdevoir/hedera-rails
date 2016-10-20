@@ -31,6 +31,26 @@ feature "newsarticle" do
       expect(newsarticle.link).to eq "http://www.birmingham.ac.uk/generic/priorities-conference-2016/index.aspx"
       expect(newsarticle).to have_attributes(newsarticle_pic_file_name: a_value)
     end
+
+    scenario "administrator edits newsarticle" do
+      newsarticle = FactoryGirl.create(:newsarticle)
+      visit newsarticle_path(newsarticle)
+      click_link "Edit newsarticle"
+      fill_in "Title", with: "This is another title"
+      click_button "Update Newsarticle"
+      newsarticle.reload
+      expect(newsarticle.title).to eq "This is another title"
+      expect(page).to have_content "Successfully updated newsarticle."
+    end
+    
+    scenario "administrator deletes newsarticle" do
+      newsarticle = FactoryGirl.create(:newsarticle)
+      visit newsarticle_path(newsarticle)
+      click_link "Delete"
+      expect(current_path).to eq newsarticles_path
+      expect(page).to have_content "Successfully deleted newsarticle."
+      expect(Newsarticle.count). to eq 0
+    end
   end
 
   context "with invalid data" do
@@ -46,6 +66,18 @@ feature "newsarticle" do
       click_button "Create Newsarticle"
       expect(page).to have_content "Title can't be blank"
       expect(current_path).to eq newsarticles_path
+    end
+
+    scenario "administrator edits newsarticle" do
+      newsarticle = FactoryGirl.create(:newsarticle)
+      visit newsarticle_path(newsarticle)
+      click_link "Edit newsarticle"
+      fill_in "Title", with: ""
+      fill_in "Body", with: "The bodytext has changed"
+      click_button "Update Newsarticle"
+      newsarticle.reload
+      expect(page).to have_content "Title can't be blank"
+      expect(newsarticle.body).not_to eq "The bodytext has changed"
     end
   end
 end

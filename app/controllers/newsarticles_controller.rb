@@ -21,6 +21,26 @@ class NewsarticlesController < ApplicationController
     end
   end
 
+  def edit
+    @newsarticle = Newsarticle.find(params[:id])
+  end
+
+  def update
+    @newsarticle = Newsarticle.find(params[:id])
+    if @newsarticle.update(newsarticle_params)
+      redirect_to newsarticle_path(@newsarticle), notice: "Successfully updated newsarticle."
+    else
+      flash[:alert] = @newsarticle.errors.full_messages.join(' ')
+      render :edit
+    end
+  end
+
+  def destroy
+    @newsarticle = Newsarticle.find(params[:id])
+    @newsarticle.destroy
+    redirect_to newsarticles_path, notice: "Successfully deleted newsarticle."
+  end
+
   private
 
   def newsarticle_params
