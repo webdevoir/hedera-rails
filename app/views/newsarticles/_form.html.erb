@@ -12,11 +12,15 @@
     <%= f.date_field :date %>
   </div>
   <div>
+    <%= f.label :location %>
+    <%= f.text_field :location %>
+  </div>
+  <div>
     <%= f.label :link %>
     <%= f.text_field :link %>
   </div>
   <%if newsarticle.newsarticle_pic.present? %>
-    <%= image_tag newsarticle.newsarticle_pic.url(:small) %>
+    <%= image_tag newsarticle.newsarticle_pic.url(:medium) %>
   <% end %>
   <div>
     <%= f.label :newsarticle_pic %>

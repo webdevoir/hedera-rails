@@ -1,0 +1,13 @@
+/*
+ *= require normalize-rails
+ *= require font-awesome
+*/
+
+@import "bourbon";
+@import "base/base";
+@import "neat";
+
+@import "partials/nav";
+@import "partials/layout";
+@import "partials/news";
+@import "partials/news-item";

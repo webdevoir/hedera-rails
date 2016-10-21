@@ -11,6 +11,7 @@ feature "newsarticle" do
     fill_in "Title", with: "Medsoc conference"
     fill_in "Body", with: "This is the body text"
     fill_in "Date", with: "07 September 2016"
+    fill_in "Location", with: "Ghent University, Ghent"
     fill_in "Link", with: "http://www.birmingham.ac.uk/generic/priorities-conference-2016/index.aspx"
     newsarticle_pic_path = 'spec/fixtures/files/newsarticle_pic.jpg'
     attach_file "newsarticle[newsarticle_pic]", newsarticle_pic_path
@@ -25,10 +26,11 @@ feature "newsarticle" do
       newsarticle = Newsarticle.last
       expect(current_path).to eq newsarticle_path(newsarticle.id)
       expect(page).to have_content "Successfully created newsarticle."
-      expect(newsarticle.title).to eq "Medsoc conference"
-      expect(newsarticle.body).to eq "This is the body text"
-      expect(newsarticle.date.strftime("%d %B %Y")).to eq "07 September 2016"
-      expect(newsarticle.link).to eq "http://www.birmingham.ac.uk/generic/priorities-conference-2016/index.aspx"
+      expect(page).to have_css "h1", text: "Medsoc conference"
+      expect(page).to have_css ".content p", text: "This is the body text"
+      expect(page).to have_css "time", text: "07 September 2016"
+      expect(page).to have_css "p", text: "Ghent University, Ghent"
+      expect(page).to have_css "p", text:  "http://www.birmingham.ac.uk/generic/priorities-conference-2016/index.aspx"
       expect(newsarticle).to have_attributes(newsarticle_pic_file_name: a_value)
     end
 

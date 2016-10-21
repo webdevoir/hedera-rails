@@ -11,8 +11,9 @@
   <footer class="article">
     <p>
     <% if @newsarticle.date.present? %>
-    <time>
-    <%= @newsarticle.date.strftime('%d %B %Y') %></time><br>
+      <time>
+        <%= @newsarticle.date.strftime('%d %B %Y') %>
+      </time><br>
     <% end %>
     <i class="fa fa-map-marker"></i><%= @newsarticle.location %><br>
     <i class="fa fa-download"></i><%= link_to "Download", @newsarticle.newsarticle_doc.url %></p>
@@ -22,9 +23,11 @@
     <p>link: <%= link_to @newsarticle.link, @newsarticle.link %></p>
   </div><!-- .content -->
   <aside>
-    <%= image_tag @newsarticle.newsarticle_pic.url(:small) %>
+    <%= image_tag @newsarticle.newsarticle_pic.url(:large) %>
   </aside>
 </article>
 <% if user_signed_in? %>
   <p><%= link_to "Edit newsarticle", edit_newsarticle_path(@newsarticle) %> &nbsp; <%= link_to "Delete", newsarticle_path(@newsarticle), method: :delete, data: { confirm: "Are you sure?" } %></p>
 <% end %>
+
+
