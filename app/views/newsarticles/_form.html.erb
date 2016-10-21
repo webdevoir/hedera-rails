@@ -31,7 +31,11 @@
     <%= f.file_field :newsarticle_doc %>
   </div>
   <div>
-    <%= f.submit %>
-    &nbsp;<%= link_to "Cancel", newsarticle_path(newsarticle) %>
+    <%= f.submit %>&nbsp;
+    <% if newsarticle.new_record? %>
+      <%= link_to "Cancel", newsarticles_path %>
+    <% else %>
+      <%= link_to "Cancel", newsarticle_path(newsarticle) %>
+    <% end %>
   </div>
 <% end %>

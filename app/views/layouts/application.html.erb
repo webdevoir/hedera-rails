@@ -23,5 +23,15 @@
       <%= render 'layouts/nav' %>
       <%= yield %>
     </div><!-- .wrapper -->
+    <%= render 'layouts/footer' %>
   </body>
+  <script>
+    $(document).ready(function() {
+      setTimeout(function(){
+        $(".flash-alert, .flash-notice").fadeOut("slow", function() {
+          $(this).remove();
+        });
+      }, 2500);
+    });
+  </script>
 </html>

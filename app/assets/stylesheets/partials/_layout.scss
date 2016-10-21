@@ -42,3 +42,11 @@ form.form {
   @include span-columns(6);
   margin-top: 2.25em;
 }
+
+.breadcrumb {
+  margin-top: 2.25em;
+  li {
+   display: inline; 
+   font-size: 0.9em;
+  }
+}
