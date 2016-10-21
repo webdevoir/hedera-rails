@@ -1,11 +1,11 @@
-<%= form_for newsarticle, html: { multipart: true } do |f| %>
+<%= form_for newsarticle, html: { multipart: true, class: "form" } do |f| %>
   <div>
   <%= f.label :title %>
   <%= f.text_field :title %>
   </div>
   <div>
     <%= f.label :body %>
-    <%= f.text_area :body %>
+    <%= f.text_area :body, class: "bodytext", rows: "10" %>
   </div>
   <div>
     <%= f.label :date %>
@@ -32,5 +32,6 @@
   </div>
   <div>
     <%= f.submit %>
+    &nbsp;<%= link_to "Cancel", newsarticle_path(newsarticle) %>
   </div>
 <% end %>
