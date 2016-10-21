@@ -15,6 +15,9 @@
     <%= f.label :link %>
     <%= f.text_field :link %>
   </div>
+  <%if newsarticle.newsarticle_pic.present? %>
+    <%= image_tag newsarticle.newsarticle_pic.url(:small) %>
+  <% end %>
   <div>
     <%= f.label :newsarticle_pic %>
     <%= f.file_field :newsarticle_pic %>

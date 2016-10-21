@@ -22,7 +22,7 @@
     <p>link: <%= link_to @newsarticle.link, @newsarticle.link %></p>
   </div><!-- .content -->
   <aside>
-    <%= image_tag @newsarticle.newsarticle_pic.url %>
+    <%= image_tag @newsarticle.newsarticle_pic.url(:small) %>
   </aside>
 </article>
 <% if user_signed_in? %>
