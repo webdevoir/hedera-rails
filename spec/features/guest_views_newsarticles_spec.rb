@@ -21,4 +21,15 @@ feature "newsarticles" do
     expect(page).to have_content(newsarticle.link)
     expect(page).to have_css("img[src*='newsarticle_pic']")
   end
+
+  scenario "a guest cannot create newsarticles" do
+    visit newsarticles_path
+    expect(page).not_to have_link "Create newsarticle"
+  end
+
+  scenario "a guest cannot edit newsarticles" do
+    visit newsarticles_path
+    click_link newsarticle.title
+    expect(page).not_to have_link "Edit newsarticle"
+  end
 end
