@@ -28,5 +28,35 @@ feature "publication" do
       expect(publication.year).to eq 2015
       expect(page).to have_link "http://www.versvak.nl/health4"
     end
+
+    scenario "administrator edits publication" do
+      publication = FactoryGirl.create(:publication)
+      visit publication_path(publication)
+      click_link "Edit publication"
+      fill_in "Title", with: "This is another title"
+      click_button "Update Publication"
+      publication.reload
+      expect(publication.title).to eq "This is another title"
+      expect(page).to have_content "Successfully updated publication"
+    end
+  end
+
+  context "with invalid data" do
+    scenario "administrator adds publication" do
+      visit publications_path
+      click_link "Create publication"
+      fill_in "Title", with: ""
+      click_button "Create Publication"
+      expect(page).to have_content "Title can't be blank"
+    end
+
+    scenario "administrator edits publication" do
+      publication = FactoryGirl.create(:publication)
+      visit publication_path(publication)
+      click_link "Edit publication"
+      fill_in "Title", with: ""
+      click_button "Update Publication"
+      expect(page).to have_content "Title can't be blank"
+    end
   end
 end

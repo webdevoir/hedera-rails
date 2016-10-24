@@ -2,7 +2,7 @@ FactoryGirl.define do
   factory :publication do
     title { Faker::Lorem.sentence }
     date { Date.today }
-    year { Time.new.year }
+    year { 2015 }
     link { Faker::Internet.url }
   end
 end
