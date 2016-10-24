@@ -17,5 +17,10 @@
   </div>
   <div>
     <%= f.submit %>
+    <% if publication.new_record? %>
+      <%= link_to "Cancel", publications_path %>
+    <% else %>
+      <%= link_to "Cancel", publication_path(publication) %>
+    <% end %>
   </div>
 <% end %>

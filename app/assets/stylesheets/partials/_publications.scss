@@ -1,0 +1,7 @@
+div.publications {
+  @include outer-container(80%);
+
+  div.publications-list {
+    @include span-columns(12);
+  }
+}

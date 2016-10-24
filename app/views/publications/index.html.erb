@@ -1,7 +1,15 @@
-<h1>Publications</h1>
-<p><%= link_to "Create publication", new_publication_path %></p>
-<ul>
-<% @publications.each do |publication| %>
-  <%= link_to publication.title, publication_path(publication) %>
-<% end %>
-</ul>
+<div class="publications">
+  <header class="pageheader">
+    <h1>Publications</h1>
+  </header>
+  <% if user_signed_in? %>
+    <p><%= link_to "Create publication", new_publication_path %></p>
+  <% end %>
+  <div class="publications-list">
+    <ul>
+      <% @publications.each do |publication| %>
+        <%= link_to publication.title, publication_path(publication) %>
+      <% end %>
+    </ul>
+  </div><!-- .publications-list -->
+</div><!-- .publications -->

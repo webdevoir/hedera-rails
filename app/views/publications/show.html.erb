@@ -1,11 +1,24 @@
-<article>
-  <header>
+<article class="publication-item">
+  <div class="breadcrumb">
+    <ul>
+      <li><%= link_to "Publications", publications_path %> > </li>
+      <li><%= @publication.title %></li>
+    </ul>
+  </div>
+  <header class="pageheader">
     <h1><%= @publication.title %></h1>
   </header>
-  <time>
-    <%= @publication.date.strftime('%d %B %Y') %>
-  </time>
-  <p><%= link_to @publication.link, @publication.link %></p>
+  <footer class="article">
+    <time>
+      <%= @publication.date.strftime('%d %B %Y') %>
+    </time>
+    <p><%= link_to @publication.link, @publication.link %></p>
+  </footer>
+  <% if user_signed_in? %>
+    <div class="edit">
+      <p><%= link_to "Edit publication", edit_publication_path(@publication) %>
+      &nbsp;|&nbsp;<%= link_to "Delete", publication_path(@publication), method: :delete, data: { confirm: "Are you sure?" } %></p>
+    </div>
+  <% end %>
 </article>
-<p><%= link_to "Edit publication", edit_publication_path(@publication) %>
-&nbsp;|&nbsp;<%= link_to "Delete", publication_path(@publication), method: :delete, data: { confirm: "Are you sure?" } %></p>
+

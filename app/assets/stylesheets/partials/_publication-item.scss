@@ -1,0 +1,12 @@
+.publication-item {
+  @include outer-container(80%);
+  header.pageheader {
+    margin-bottom: 0;
+    h1 {
+      text-align: left;
+    }
+  }
+  footer.article {
+    margin-bottom: 2.25em;
+  }
+}
