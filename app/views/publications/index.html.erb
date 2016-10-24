@@ -1,0 +1,6 @@
+<h1>Publications</h1>
+<ul>
+<% @publications.each do |publication| %>
+  <%= link_to publication.title, publication_path(publication) %>
+<% end %>
+</ul>

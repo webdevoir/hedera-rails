@@ -1,0 +1,9 @@
+<article>
+  <header>
+    <h1><%= @publication.title %></h1>
+  </header>
+  <time>
+    <%= @publication.date.strftime('%d %B %Y') %>
+  </time>
+  <p><%= link_to @publication.link, @publication.link %></p>
+</article>
