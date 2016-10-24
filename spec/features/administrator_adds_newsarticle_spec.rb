@@ -51,7 +51,7 @@ feature "newsarticle" do
       click_link "Delete"
       expect(current_path).to eq newsarticles_path
       expect(page).to have_content "Successfully deleted newsarticle."
-      expect(Newsarticle.count). to eq 0
+      expect(Newsarticle.count).to eq 0
     end
   end
 

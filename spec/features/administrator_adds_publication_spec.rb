@@ -39,6 +39,15 @@ feature "publication" do
       expect(publication.title).to eq "This is another title"
       expect(page).to have_content "Successfully updated publication"
     end
+
+    scenario "administrator deletes publication" do
+      publication = FactoryGirl.create(:publication)
+      visit publication_path(publication)
+      click_link "Delete"
+      expect(current_path).to eq publications_path
+      expect(page).to have_content "Successfully deleted publication."
+      expect(Publication.count).to eq 0
+    end
   end
 
   context "with invalid data" do

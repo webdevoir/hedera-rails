@@ -1,21 +1,6 @@
-<%= form_for @publication, html: { class: "form" } do |f| %>
-  <div>
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-  </div>
-  <div>
-    <%= f.label :date %>
-    <%= f.date_field :date %>
-  </div>
-  <div>
-    <%= f.label :year %>
-    <%= f.number_field :year %>
-  </div>
-  <div>
-    <%= f.label :link %>
-    <%= f.text_field :link %>
-  </div>
-  <div>
-    <%= f.submit %>
-  </div>
-<% end %>
+<div class="publication-item">
+  <header>
+    <h1>Create publication</h1>
+  </header>
+  <%= render 'form', publication: @publication %>
+</div>

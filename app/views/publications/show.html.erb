@@ -8,3 +8,4 @@
   <p><%= link_to @publication.link, @publication.link %></p>
 </article>
 <p><%= link_to "Edit publication", edit_publication_path(@publication) %>
+&nbsp;|&nbsp;<%= link_to "Delete", publication_path(@publication), method: :delete, data: { confirm: "Are you sure?" } %></p>
