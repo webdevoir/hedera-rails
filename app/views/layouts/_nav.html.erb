@@ -9,7 +9,7 @@
         <li class="nav-link"><a href="/about.html">ABOUT</a></li>
         <li class="nav-link"><a href="/people.html">PEOPLE</a></li>
         <li class="nav-link"><a href="/research.html">RESEARCH</a></li>
-        <li class="nav-link"><a href="javascript:void(0)">PUBLICATIONS</a></li>
+        <li class="nav-link"><%= link_to "PUBLICATIONS", publications_path %></li>
         <li class="nav-link"><a href="/contact.html">CONTACT</a></li>
         <% if user_signed_in? %>
           <li class="nav-link"><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
