@@ -1,0 +1,35 @@
+<article class="person">
+  <header class="pageheader">
+    <h1><%= @member.name %></h1>
+  </header>
+  <aside>
+    <%= image_tag 'sarah-van-leuven.jpg' %>
+  </aside>
+  <div class="content">
+    <section class="bio">
+      <%= simple_format(@member.bio) %>
+    </section>
+    <section>
+      <h2>Research</h2>
+      <ul>
+        <li>Medical sociology</li>
+        <li>Sociology of health and illness</li>
+      </ul>
+    </section>
+    <section>
+      <h2>Output</h2>
+      <p>Het veld van ouderengerelateerde gezondheidsinformatie: Een stakeholder analyse<i class="fa fa-download right"></p></i>
+      <p>Pharmaceuticals as solution for health problems: A stakeholder perspective<i class="fa fa-download right"></i></p>
+    </section>
+    <section class="bibliography">
+      <h2>Bibliography</h2>
+      <p><%= link_to @member.bibliography, @member.bibliography %></p>
+    </section><!-- .bibliography -->
+    <section class="contact">
+      <h2>Contact</h2>
+      <p><i class="fa fa-envelope"></i><%= mail_to @member.email, @member.email %><br>
+      <i class="fa fa-phone"></i><%= link_to @member.phone, @member.phone %><br>
+      <i class="fa fa-map-marker"></i><%= @member.address %></p>
+    </section><!-- .contact -->
+  </div><!-- .content -->
+</article>

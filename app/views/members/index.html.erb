@@ -6,7 +6,7 @@
     <% @members.each do |member| %>
       <div class="researcher">
         <%= image_tag member.member_pic.url(:medium) %>
-        <p><%= member.name %><br><%= member.title %></p>
+        <p><%= link_to member.name, member_path(member) %><br><%= member.title %></p>
       </div><!-- .researcher -->
     <% end %>
   </div><!-- .researchers -->
