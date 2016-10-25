@@ -5,11 +5,14 @@
   <% if user_signed_in? %>
     <p><%= link_to "Create publication", new_publication_path %></p>
   <% end %>
-  <div class="publications-list">
-    <ul>
-      <% @publications.each do |publication| %>
-        <%= link_to publication.title, publication_path(publication) %>
+      <% @publications.group_by { |p| p.publication_category.name }.each do |category, publications| %>
+        <div class="publications-list">
+          <h2><%= category %></h2>
+          <ul>
+            <% publications.take(3).each do |publication| %> 
+              <li><%= link_to publication.title, publication_path(publication) %></li>
+            <% end %>
+          </ul>
+        </div><!-- .publications-list -->
       <% end %>
-    </ul>
-  </div><!-- .publications-list -->
 </div><!-- .publications -->

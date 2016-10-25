@@ -8,6 +8,7 @@ feature "publication" do
   end
 
   def fill_in_fields
+    select "presentation", from: "Category"
     fill_in "Title", with: "Gezondheidsinformatie, waar komt dat vandaan?"
     fill_in "Date", with: "22 June 2015"
     fill_in "Year", with: "2015"
@@ -16,12 +17,14 @@ feature "publication" do
 
   context "with valid data" do
     scenario "administrator adds publication" do
+      PublicationCategory.create(name: "presentation")
       visit publications_path
       click_link "Create publication"
       fill_in_fields
       click_button "Create Publication"
       expect(page).to have_content "Successfully created publication."
       publication = Publication.last
+      expect(publication.publication_category.name).to eq "presentation"
       expect(current_path).to eq publication_path(publication.id)
       expect(page).to have_css "h1", text: "Gezondheidsinformatie, waar komt dat vandaan?"
       expect(page).to have_css "time", text: "22 June 2015"

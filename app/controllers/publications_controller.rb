@@ -1,6 +1,6 @@
 class PublicationsController < ApplicationController
   def index
-    @publications = Publication.all
+    @publications = Publication.order(publication_category_id: :desc).order(date: :desc)
   end
 
   def show
@@ -44,6 +44,6 @@ class PublicationsController < ApplicationController
   private
 
   def publication_params
-    params.required(:publication).permit(:title, :date, :year, :link)
+    params.required(:publication).permit(:publication_category_id, :title, :date, :year, :link)
   end
 end

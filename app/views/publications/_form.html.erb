@@ -1,5 +1,9 @@
 <%= form_for publication, html: { class: "form" } do |f| %>
   <div>
+    <%= f.label :publication_category_id, "Category" %>
+    <%= f.select :publication_category_id, options_for_publication_categories, label: "Category" %>
+  </div>
+  <div>
     <%= f.label :title %>
     <%= f.text_field :title %>
   </div>

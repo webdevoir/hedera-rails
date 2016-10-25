@@ -3,5 +3,6 @@ div.publications {
 
   div.publications-list {
     @include span-columns(12);
+    margin-bottom: 3.375em;
   }
 }

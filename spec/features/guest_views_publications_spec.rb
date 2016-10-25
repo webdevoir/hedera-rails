@@ -1,7 +1,8 @@
 require 'rails_helper'
 
 feature "publications" do
-  let!(:publication) { FactoryGirl.create(:publication) }
+  let(:category) { PublicationCategory.create(name: "presentation") }
+  let!(:publication) { FactoryGirl.create(:publication, publication_category_id: category.id) }
 
   scenario "guest views publications" do
     visit publications_path
