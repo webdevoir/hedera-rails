@@ -18,6 +18,14 @@ feature "publications" do
     expect(page).to have_content publication.link
   end
 
+  scenario "guest views all publications for a given publication category" do
+    visit publications_path
+    click_link "all publications for #{category.name}"
+    expect(page).to have_css "h2", text: publication.year
+    expect(page).to have_css "p", text: publication.title
+    expect(current_path).to eq sortedpublications_path(category.name)
+  end
+
   scenario "a guest cannot create publication" do
     visit publications_path
     expect(page).not_to have_link "Create publication"

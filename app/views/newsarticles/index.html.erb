@@ -3,7 +3,9 @@
     <h1>News</h1>
   </header>
   <% if user_signed_in? %>
-    <p><%= link_to "Create newsarticle", new_newsarticle_path %></p>
+    <div class="edit">
+      <p><i class="fa fa-plus"></i><%= link_to "Create newsarticle", new_newsarticle_path %></p>
+    </div>
   <% end %>
   <div class="news-list">
   <% @newsarticles.each do |article| %>

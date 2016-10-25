@@ -3,7 +3,9 @@
     <h1>Publications</h1>
   </header>
   <% if user_signed_in? %>
-    <p><%= link_to "Create publication", new_publication_path %></p>
+    <div class="edit">
+      <p><i class="fa fa-plus"></i><%= link_to "Create publication", new_publication_path %></p>
+    </div>
   <% end %>
       <% @publications.group_by { |p| p.publication_category.name }.each do |category, publications| %>
         <div class="publications-list">
@@ -13,6 +15,7 @@
               <li><%= link_to publication.title, publication_path(publication) %></li>
             <% end %>
           </ul>
+          <p class="all"><%= link_to "all publications for #{category} ...", sortedpublications_path(category) %></p>
         </div><!-- .publications-list -->
       <% end %>
 </div><!-- .publications -->

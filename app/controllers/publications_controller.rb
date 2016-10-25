@@ -3,6 +3,11 @@ class PublicationsController < ApplicationController
     @publications = Publication.order(publication_category_id: :desc).order(date: :desc)
   end
 
+  def sort
+    @category = PublicationCategory.find_by_name(params[:category])
+    @publications = Publication.sort_by_category(@category.id).grouped_by_year
+  end
+
   def show
     @publication = Publication.find(params[:id])
   end

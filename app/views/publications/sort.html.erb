@@ -1,0 +1,20 @@
+<div class="publications">
+  <div class="breadcrumb">
+    <ul>
+      <li><%= link_to "Publications", publications_path %> > </li>
+      <li><%= @category.name %></li>
+    </ul>
+  </div>
+  <header class="pageheader">
+    <h1>Publications: <%= @category.name %></h1>
+  </header>
+
+  <% if @publications.any? %>
+    <% @publications.each do |year, publications| %>
+      <h2><%= year %></h2>
+      <% publications.each do |pub| %>
+        <p><%= link_to pub.title, publication_path(pub) %></p>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>
