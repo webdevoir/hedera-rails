@@ -33,7 +33,7 @@
   </aside>
   <% if user_signed_in? %>
     <div class="edit">
-    <p><%= link_to "Edit newsarticle", edit_newsarticle_path(@newsarticle) %> &nbsp;|&nbsp; <%= link_to "Delete", newsarticle_path(@newsarticle), method: :delete, data: { confirm: "Are you sure?" } %></p>
+      <p><i class="fa fa-pencil"></i><%= link_to "Edit newsarticle", edit_newsarticle_path(@newsarticle) %> &nbsp;&nbsp;<i class="fa fa-trash"></i><%= link_to "Delete", newsarticle_path(@newsarticle), method: :delete, data: { confirm: "Are you sure?" } %></p>
     </div>
   <% end %>
 </article>
