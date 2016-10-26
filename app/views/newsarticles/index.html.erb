@@ -15,7 +15,7 @@
       </aside>
       <div class="content">
         <h2><%= link_to article.title, newsarticle_path(article) %></h2>    
-        <%= simple_format(article.body) %>
+          <%= truncate(article.body, :length => 200, :separator => ' ') %>
       </div><!-- .content -->
     </div><!-- .news-list -->
   <% end %>
