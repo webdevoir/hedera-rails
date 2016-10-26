@@ -35,6 +35,12 @@ class MembersController < ApplicationController
     end
   end
 
+  def destroy
+    @member = Member.find(params[:id])
+    @member.destroy
+    redirect_to members_path, notice: "Successfully deleted member."
+  end
+
   private
 
   def member_params

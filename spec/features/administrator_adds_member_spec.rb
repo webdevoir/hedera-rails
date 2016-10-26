@@ -47,6 +47,15 @@ feature "member" do
       expect(member.name).to eq "Jane Doe"
       expect(page).to have_content "Successfully updated member."
     end
+
+    scenario "administrator deletes member" do
+      member = FactoryGirl.create(:member)
+      visit member_path(member)
+      click_link "Delete"
+      expect(current_path).to eq members_path
+      expect(page).to have_content "Successfully deleted member."
+      expect(Member.count).to eq 0
+    end
   end
 
   context "with invalid data" do
