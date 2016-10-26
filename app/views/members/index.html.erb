@@ -2,6 +2,11 @@
   <header class="pageheader">
     <h1>PEOPLE</h1>
   </header>
+  <% if user_signed_in? %>
+    <div class="edit">
+      <p><i class="fa fa-plus"></i><%= link_to "Create member", new_member_path %></p>
+    </div>
+  <% end %>
   <div class="researchers">
     <% @members.each do |member| %>
       <div class="researcher">
