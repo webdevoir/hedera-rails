@@ -32,4 +32,7 @@
       <i class="fa fa-map-marker"></i><%= @member.address %></p>
     </section><!-- .contact -->
   </div><!-- .content -->
+  <div class="edit">
+    <p><i class="fa fa-pencil"></i><%= link_to "Edit member", edit_member_path(@member) %>
+  </div>
 </article>

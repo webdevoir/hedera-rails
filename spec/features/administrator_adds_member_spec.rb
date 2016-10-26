@@ -36,6 +36,17 @@ feature "member" do
       expect(page).to have_content "https://biblio.ugent.be/publication?q=%22Sarah+Van+den+Bogaert%22"
       expect(member).to have_attributes(member_pic_file_name: a_value)
     end
+
+    scenario "administrator edits member" do
+      member = FactoryGirl.create(:member)
+      visit member_path(member)
+      click_link "Edit member"
+      fill_in "Name", with: "Jane Doe"
+      click_button "Update Member"
+      member.reload
+      expect(member.name).to eq "Jane Doe"
+      expect(page).to have_content "Successfully updated member."
+    end
   end
 
   context "with invalid data" do
