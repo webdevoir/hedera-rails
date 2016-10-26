@@ -29,6 +29,9 @@ class MembersController < ApplicationController
     @member = Member.find(params[:id])
     if @member.update(member_params)
       redirect_to member_path(@member), notice: "Successfully updated member."
+    else
+      flash[:alert] = @member.errors.full_messages.join(' ')
+      render :edit
     end
   end
 

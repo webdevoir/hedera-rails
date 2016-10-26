@@ -57,6 +57,15 @@ feature "member" do
       click_button "Create Member"
       expect(page).to have_content "Name can't be blank"
     end
+
+    scenario "administrator edits member" do
+      member = FactoryGirl.create(:member)
+      visit member_path(member)
+      click_link "Edit member"
+      fill_in "Name", with: ""
+      click_button "Update Member"
+      expect(page).to have_content "Name can't be blank"
+    end
   end
 
 end
