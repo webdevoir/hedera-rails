@@ -35,6 +35,7 @@ gem 'bourbon'
 gem 'neat'
 gem 'normalize-rails'
 gem 'font-awesome-rails', '~> 4.6.3.1'
+gem 'high_voltage', '~> 3.0.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
