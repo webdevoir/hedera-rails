@@ -38,4 +38,14 @@ feature "member" do
     end
   end
 
+  context "with invalid data" do
+    scenario "adminstrator adds member" do
+      visit members_path
+      click_link "Create member"
+      fill_in "Name", with: ""
+      click_button "Create Member"
+      expect(page).to have_content "Name can't be blank"
+    end
+  end
+
 end

@@ -15,6 +15,9 @@ class MembersController < ApplicationController
     @member = Member.create(member_params)
     if @member.save
       redirect_to member_path(@member), notice: "Successfully created member."
+    else
+      flash[:alert] = @member.errors.full_messages.join(' ')
+      render :new
     end
   end
 
