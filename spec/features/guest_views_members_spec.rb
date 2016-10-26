@@ -21,4 +21,15 @@ feature "members" do
     expect(page).to have_css "section.contact p", text: member.phone
     expect(page).to have_css "section.contact p", text: member.address
   end
+
+  scenario "a guest cannot create members" do
+    visit members_path
+    expect(page).not_to have_link "Create member"
+  end
+
+  scenario "a guest cannot edit members" do
+    visit members_path
+    click_link member.name
+    expect(page).not_to have_link "Edit member"
+  end
 end
