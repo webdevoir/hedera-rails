@@ -1,0 +1,24 @@
+article.person {
+  @include outer-container(80%);
+
+  aside {
+    @include media($medium-screen) {
+      @include span-columns(4);
+      float: right;
+    }
+  }
+
+  div.content {
+    @include media($medium-screen) {
+      @include span-columns(6);
+    }
+
+    section {
+      @include media($medium-screen) {
+        margin-top: 0;
+      }
+      margin-bottom: 2.25em;
+      margin-top: 2.25em;
+    }
+  }
+}

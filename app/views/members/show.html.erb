@@ -3,7 +3,7 @@
     <h1><%= @member.name %></h1>
   </header>
   <aside>
-    <%= image_tag 'sarah-van-leuven.jpg' %>
+    <%= image_tag @member.member_pic.url(:medium)  %>
   </aside>
   <div class="content">
     <section class="bio">
