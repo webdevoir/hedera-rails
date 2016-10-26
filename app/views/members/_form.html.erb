@@ -33,5 +33,10 @@
   </div>
   <div>
     <%= f.submit %>
+    <% if member.new_record? %>
+      <%= link_to "Cancel", members_path %>
+    <% else %>
+      <%= link_to "Cancel", member_path(member) %>
+    <% end %>
   </div>
 <% end %>

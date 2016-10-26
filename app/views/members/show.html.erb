@@ -35,7 +35,7 @@
   <% if user_signed_in? %>
     <div class="edit">
       <p><i class="fa fa-pencil"></i><%= link_to "Edit member", edit_member_path(@member) %>
-      &nbsp;&nbsp;<i class="fa fa-trash"><%= link_to "Delete", member_path(@member), method: :delete, data: { confirm: "Are you sure?" } %></p>
+    &nbsp;&nbsp;<i class="fa fa-trash"></i><%= link_to "Delete", member_path(@member), method: :delete, data: { confirm: "Are you sure?" } %></p>
     </div>
   <% end %>
 </article>
