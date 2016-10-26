@@ -25,11 +25,15 @@ feature "newsarticles" do
   scenario "a guest cannot create newsarticles" do
     visit newsarticles_path
     expect(page).not_to have_link "Create newsarticle"
+    visit new_newsarticle_path
+    expect(current_path).to eq new_user_session_path
   end
 
   scenario "a guest cannot edit newsarticles" do
     visit newsarticles_path
     click_link newsarticle.title
     expect(page).not_to have_link "Edit newsarticle"
+    visit edit_newsarticle_path(newsarticle)
+    expect(current_path).to eq new_user_session_path
   end
 end

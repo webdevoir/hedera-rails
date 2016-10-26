@@ -15,7 +15,7 @@ class NewsarticlesController < ApplicationController
   def create
     @newsarticle = Newsarticle.create(newsarticle_params)
     if @newsarticle.save
-      redirect_to newsarticle_path(@newsarticle), notice: "Successfully created newsarticle."
+      redirect_to @newsarticle, notice: "Successfully created newsarticle."
     else
       flash[:alert] = @newsarticle.errors.full_messages.join(' ')
       render :new
@@ -29,7 +29,7 @@ class NewsarticlesController < ApplicationController
   def update
     @newsarticle = Newsarticle.find(params[:id])
     if @newsarticle.update(newsarticle_params)
-      redirect_to newsarticle_path(@newsarticle), notice: "Successfully updated newsarticle."
+      redirect_to @newsarticle, notice: "Successfully updated newsarticle."
     else
       flash[:alert] = @newsarticle.errors.full_messages.join(' ')
       render :edit

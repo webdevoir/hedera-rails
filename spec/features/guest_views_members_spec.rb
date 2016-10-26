@@ -25,11 +25,15 @@ feature "members" do
   scenario "a guest cannot create members" do
     visit members_path
     expect(page).not_to have_link "Create member"
+    visit new_member_path
+    expect(current_path).to eq new_user_session_path
   end
 
   scenario "a guest cannot edit members" do
     visit members_path
     click_link member.name
     expect(page).not_to have_link "Edit member"
+    visit edit_member_path(member)
+    expect(current_path).to eq new_user_session_path
   end
 end

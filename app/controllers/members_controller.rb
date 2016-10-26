@@ -1,4 +1,5 @@
 class MembersController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show]
   def index
     @members = Member.all
   end 
@@ -14,7 +15,7 @@ class MembersController < ApplicationController
   def create
     @member = Member.create(member_params)
     if @member.save
-      redirect_to member_path(@member), notice: "Successfully created member."
+      redirect_to @member, notice: "Successfully created member."
     else
       flash[:alert] = @member.errors.full_messages.join(' ')
       render :new
@@ -28,7 +29,7 @@ class MembersController < ApplicationController
   def update
     @member = Member.find(params[:id])
     if @member.update(member_params)
-      redirect_to member_path(@member), notice: "Successfully updated member."
+      redirect_to @member, notice: "Successfully updated member."
     else
       flash[:alert] = @member.errors.full_messages.join(' ')
       render :edit

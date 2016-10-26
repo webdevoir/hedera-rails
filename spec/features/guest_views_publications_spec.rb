@@ -29,11 +29,15 @@ feature "publications" do
   scenario "a guest cannot create publication" do
     visit publications_path
     expect(page).not_to have_link "Create publication"
+    visit new_publication_path
+    expect(current_path).to  eq new_user_session_path
   end
 
   scenario "a guest cannot edit publications" do
     visit publications_path
     click_link publication.title
     expect(page).not_to have_link "Edit publication"
+    visit edit_publication_path(publication)
+    expect(current_path).to eq new_user_session_path
   end
 end
