@@ -15,7 +15,7 @@
           <header>
             <h3><%= article.title %></h3>
           </header>
-          <%= truncate(article.body, :length => 200, :separator => ' ') %>
+          <p><%= truncate(article.body, :length => 200, :separator => ' ') %></p>
           <p class="more"><%= link_to "read article", newsarticle_path(article) %></p>
           </div><!-- .content -->
         </article><!-- .newsitem -->

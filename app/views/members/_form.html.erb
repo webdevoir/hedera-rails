@@ -27,6 +27,9 @@
     <%= f.label :bibliography %>
     <%= f.url_field :bibliography %>
   </div>
+  <% if member.member_pic.present? %>
+    <%= image_tag member.member_pic.url(:medium) %>
+  <% end %>
   <div>
     <%= f.label :member_pic %>
     <%= f.file_field :member_pic %>

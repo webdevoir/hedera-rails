@@ -17,7 +17,7 @@
   </div>
   <div>
     <%= f.label :link %>
-    <%= f.text_field :link %>
+    <%= f.url_field :link %>
   </div>
   <%if newsarticle.newsarticle_pic.present? %>
     <%= image_tag newsarticle.newsarticle_pic.url(:medium) %>
