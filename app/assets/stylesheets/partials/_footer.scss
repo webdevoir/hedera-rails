@@ -29,11 +29,13 @@ html, body {
   $large-screen: 50em !default;
   width: 100%;
   border-top: 1px solid $light-gray;
+  
   .center {
     @include clearfix;
     clear: both;
-    margin: 0 auto;
     display: block;
+    margin: 0 auto;
+    width: 15%;
   }
 
   .footer-logo {
@@ -41,7 +43,6 @@ html, body {
     margin-right: 1em;
 
     @include media($large-screen) {
-      //float: left;
       margin-bottom: 0;
     }
 
@@ -53,9 +54,9 @@ html, body {
   ul {
     margin: 0;
     padding-left: 0;
+    
 
     @include media($large-screen) {
-      //float: right;
       padding-top: 0.3em;
       text-align: left;
     }

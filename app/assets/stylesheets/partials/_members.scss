@@ -1,5 +1,6 @@
 div.people {
   @include outer-container(80%);
+  margin-bottom: 3.375em;
 
   div.researchers {
     @include row();

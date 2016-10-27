@@ -1,5 +1,6 @@
 article.person {
   @include outer-container(80%);
+  margin-bottom: 3.375em;
 
   aside {
     @include media($medium-screen) {
