@@ -1,5 +1,6 @@
 .news-item {
   @include outer-container(80%);
+  margin-bottom: 3.375em;
   header.pageheader {
     margin-bottom: 0;
     h1 {
