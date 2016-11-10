@@ -80,6 +80,6 @@ test:
 #
 production:
   <<: *default
-  database: hedera-rails_production
-  username: hedera-rails
-  password: <%= ENV['HEDERA-RAILS_DATABASE_PASSWORD'] %>
+  database: hedera_production
+  # username: hedera-rails
+  # password: <%= ENV['HEDERA-RAILS_DATABASE_PASSWORD'] %>
