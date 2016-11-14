@@ -1,5 +1,5 @@
 
-t = "/opt/www/hedera/current"
+root = "/opt/www/hedera/current"
 working_directory root
 pid "#{root}/tmp/pids/unicorn.pid"
 stderr_path "#{root}/log/unicorn.log"
