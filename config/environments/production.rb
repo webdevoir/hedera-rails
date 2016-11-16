@@ -87,7 +87,6 @@ Rails.application.configure do
 
   config.paperclip_defaults = {
     storage: :s3,
-    s3_region: ENV['AWS_REGION'],
     bucket: ENV['S3_BUCKET_NAME'],
     s3_host_name: "s3-#{ENV['AWS_REGION']}.amazonaws.com",
   }
