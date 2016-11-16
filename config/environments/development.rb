@@ -55,7 +55,11 @@ Rails.application.configure do
   config.paperclip_defaults = {
     storage: :s3,
     bucket: 'hedera1',
-    s3_host_name: "s3-eu-west-1.amazonaws.com",
-    s3_region: 'eu-west-1'
+    s3_region: 'eu-west-1',
+    s3_credentials: {
+      access_key_id: Rails.application.secrets.AWS_ACCESS_KEY_ID,
+      secret_access_key: Rails.application.secrets.AWS_SECRET_ACCESS_KEY,
+      s3_host_name: "s3-eu-west-1.amazonaws.com",
+    }
   }
 end
