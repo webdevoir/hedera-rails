@@ -20,3 +20,5 @@ public
 
 # Ignore application configuration
 /config/application.yml
+/config/aws.yml
+/config/secrets.yml
