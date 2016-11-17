@@ -2,6 +2,7 @@ require 'rails_helper'
 
 feature "publication" do
   let(:user) { FactoryGirl.create(:user) }
+  let!(:member) { FactoryGirl.create(:member) }
 
   before do
     login_as(user, scope: :user)
@@ -9,10 +10,19 @@ feature "publication" do
 
   def fill_in_fields
     select "presentation", from: "Category"
+    check member.name
     fill_in "Title", with: "Gezondheidsinformatie, waar komt dat vandaan?"
     fill_in "Date", with: "22 June 2015"
     fill_in "Year", with: "2015"
     fill_in "Link", with: "http://www.versvak.nl/health4"
+    fill_in "Journal", with: "Sociological magazine"
+    fill_in "Volume", with: 2
+    fill_in "Issue", with: 1
+    fill_in "Pages", with: 100
+    fill_in "Congres", with: "the sociological congres"
+    fill_in "Location congres", with: "Norway"
+    fill_in "External authors", with: "Mark Elchardus"
+
   end
 
   context "with valid data" do
@@ -25,11 +35,20 @@ feature "publication" do
       expect(page).to have_content "Successfully created publication."
       publication = Publication.last
       expect(publication.publication_category.name).to eq "presentation"
+      expect(publication.authors.count).to eq 1
+      expect(publication.authors.last.name). to eq member.name
       expect(current_path).to eq publication_path(publication.id)
       expect(page).to have_css "h1", text: "Gezondheidsinformatie, waar komt dat vandaan?"
       expect(page).to have_css "time", text: "22 June 2015"
       expect(publication.year).to eq 2015
       expect(page).to have_link "http://www.versvak.nl/health4"
+      expect(page).to have_content "Sociological magazine"
+      expect(publication.volume).to eq 2
+      expect(publication.issue).to eq 1
+      expect(publication.pages).to eq 100
+      expect(page).to have_css ".bodytext p", text: "the sociological congres"
+      expect(page).to have_css ".bodytext p", text: "Norway"
+      expect(page).to have_css ".bodytext p", text:  "Mark Elchardus"
     end
 
     scenario "administrator edits publication" do

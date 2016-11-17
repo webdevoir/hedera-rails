@@ -1,5 +1,7 @@
 class Publication < ApplicationRecord
   belongs_to :publication_category
+  has_many :member_publications
+  has_many :authors, :through => :member_publications, :source => :member
   validates :title, :date, :year, presence: true
   validates :year, numericality: true
   validates :link, format: URI::regexp(%w(http https)), allow_blank: true

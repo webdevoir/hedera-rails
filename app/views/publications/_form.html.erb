@@ -20,6 +20,41 @@
     <%= f.url_field :link %>
   </div>
   <div>
+    <%= f.label :journal %>
+    <%= f.text_field :journal %>
+  </div>
+  <div>
+    <%= f.label :volume %>
+    <%= f.number_field :volume %>
+  </div>
+  <div>
+    <%= f.label :issue %>
+    <%= f.number_field :issue %>
+  </div>
+  <div>
+    <%= f.label :pages %>
+    <%= f.number_field :pages %>
+  </div>
+  <div>
+    <%= f.label :congres %>
+    <%= f.text_field :congres %>
+  </div>
+  <div>
+    <%= f.label :location_congres %>
+    <%= f.text_field :location_congres %>
+  </div>
+  <div>
+     <%= f.label "Authors" %>
+     <%= f.collection_check_boxes :author_ids, Member.all, :id, :name do |b| %>
+       <%= b.label() { b.check_box + b.text} %>
+     <% end %>
+  </div>
+  <div>
+    <%= f.label :external_authors %>
+    <%= f.text_field :external_authors %>
+  </div>
+
+  <div>
     <%= f.submit %>
     <% if publication.new_record? %>
       <%= link_to "Cancel", publications_path %>

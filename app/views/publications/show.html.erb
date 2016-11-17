@@ -14,6 +14,18 @@
     </time>
     <p><%= link_to @publication.link, @publication.link %></p>
   </footer>
+  <div class="bodytext">
+    <% if @publication.external_authors.present? %>
+      <p>External authors: <%= @publication.external_authors %></p>
+    <% end %>
+    <% if @publication.journal.present? %>
+      <p>Journal: <%= @publication.journal %>, vol. <%= @publication.volume %>, issue <%= @publication.issue %>, pp. <%= @publication.pages %></p>
+    <% end %>
+    <% if @publication.congres.present? %>
+      <p>Congres: <%= @publication.congres %><br>
+      location: <%= @publication.location_congres %></p>
+    <% end %>
+  </div>
   <% if user_signed_in? %>
     <div class="edit">
       <p><i class="fa fa-pencil"></i><%= link_to "Edit publication", edit_publication_path(@publication) %>

@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Member, type: :model do
+  it { should have_many(:publications) }
   it { should validate_presence_of(:name) }
 
   it "accepts properly formatted links" do
