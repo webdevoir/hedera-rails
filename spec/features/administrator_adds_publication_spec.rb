@@ -36,7 +36,8 @@ feature "publication" do
       publication = Publication.last
       expect(publication.publication_category.name).to eq "presentation"
       expect(publication.authors.count).to eq 1
-      expect(publication.authors.last.name). to eq member.name
+      expect(page).to have_css "footer  p", text: member.name
+      expect(page).to have_css "footer p", text:  "Mark Elchardus"
       expect(current_path).to eq publication_path(publication.id)
       expect(page).to have_css "h1", text: "Gezondheidsinformatie, waar komt dat vandaan?"
       expect(page).to have_css "time", text: "22 June 2015"
@@ -48,7 +49,6 @@ feature "publication" do
       expect(publication.pages).to eq 100
       expect(page).to have_css ".bodytext p", text: "the sociological congres"
       expect(page).to have_css ".bodytext p", text: "Norway"
-      expect(page).to have_css ".bodytext p", text:  "Mark Elchardus"
     end
 
     scenario "administrator edits publication" do

@@ -9,15 +9,22 @@
     <h1><%= @publication.title %></h1>
   </header>
   <footer class="article">
+    <% if @publication.authors.any? %>
+      <p>Authors:
+        <% @publication.authors.each do |author| %>
+          <%= author.name %><%= ", " unless author == @publication.authors.last %> 
+        <% end %>
+        <%= @publication.external_authors if @publication.authors.present? %>
+      </p>
+    <% end %>
     <time>
       <%= @publication.date.strftime('%d %B %Y') %>
     </time>
-    <p><%= link_to @publication.link, @publication.link %></p>
+    <% if @publication.link.present? %>
+      <p>Link: <%= link_to @publication.link, @publication.link %></p>
+    <% end %>
   </footer>
   <div class="bodytext">
-    <% if @publication.external_authors.present? %>
-      <p>External authors: <%= @publication.external_authors %></p>
-    <% end %>
     <% if @publication.journal.present? %>
       <p>Journal: <%= @publication.journal %>, vol. <%= @publication.volume %>, issue <%= @publication.issue %>, pp. <%= @publication.pages %></p>
     <% end %>
