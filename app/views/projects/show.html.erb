@@ -15,9 +15,11 @@
       <div class="body">
         <%= simple_format(@project.description) %> 
       </div><! -- .body -->
-      <div class="downloads">
-        <p><i class="fa fa-link"></i><a href="http://www.scheidinginvlaanderen.be">www.scheidinginvlaanderen.be</a></p>
-      </div>
+      <% if @project.link.present? %>
+        <div class="downloads">
+          <p><i class="fa fa-link"></i><%= link_to @project.link, @project.link %></p>
+        </div>
+      <% end %>
     </div><!-- .content -->
     <% if user_signed_in? %>
       <div class="edit">

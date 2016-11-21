@@ -12,6 +12,9 @@ feature "project" do
     fill_in "Description", with: "Divorce in Flanders is an interacademic research project"
     fill_in "Contact", with: "Piet Bracke"
     fill_in "Email", with: "piet.bracke@ugent.be"
+    fill_in "Link", with: "http://www.scheidinginvlaanderen.be"
+    project_pic_path = 'spec/fixtures/files/project_pic.jpg'
+    attach_file "project[project_pic]", project_pic_path
   end
 
   context "with valid data" do
@@ -23,6 +26,9 @@ feature "project" do
       expect(Project.count).to eq 1
       expect(page).to have_content "Successfully created project."
       expect(page).to have_content "Divorce in Flanders"
+      project = Project.last
+      expect(project).to have_attributes(project_pic_file_name: a_value)
+      expect(page).to have_css "div.downloads p", text: "http://www.scheidinginvlaanderen.be"
     end
 
     scenario "administrator edits project" do
