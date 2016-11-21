@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   resources :newsarticles
   resources :publications
   resources :members
+  resources :projects
 end

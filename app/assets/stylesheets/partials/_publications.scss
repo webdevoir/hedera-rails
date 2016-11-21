@@ -5,7 +5,8 @@ div.publications {
     @include span-columns(8);
     margin-bottom: 3.375em;
     p.all {
-      float: right;
+      font-weight: bold;
+      margin-top: 2.25em;
     }
   }
   div.edit {
