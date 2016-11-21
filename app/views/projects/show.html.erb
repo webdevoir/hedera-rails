@@ -2,7 +2,7 @@
   <article>
     <aside>
       <figure>
-        &nbsp;
+        <%= image_tag @project.project_pic.url(:large) %>
       </figure>
     </aside>
     <div class="content">
@@ -10,10 +10,10 @@
         <h1><%= @project.title %></h1>
         <p class="details">
         Researchers: <a href="#">Elien Colman</a>, <a href="#">Sara Symoens</a><br>
-        Promotor: <a href"#">Piet Bracke</a></p>
+        Contact: <%= @project.contact %> (<i class="fa fa-envelope" ></i><%= mail_to @project.email %>)</p>
       </header>
       <div class="body">
-        <p>Divorce in Flanders is an interacademic (UA, KUL, VUB, UGent, SVR) research project, financed by FWO-SBO. The project aims to get insight in the causes and consequences of family dissolution. Therefore, we compare ever-divorced people with those who are still in their first marriage. Divorce and separation are multi-facet life-events, involving different actors (partners, parents, children, care providers, lawyers,...), and affecting many aspects of life. The data for the project is collected in a multi-actor perspective giving information on both spouses, a child and the parents of both spouses, resulting in a high-standard large-scale database. The study focuses on the following topics: demographic characteristics, partnership, parenthood, social networks, socio-economic factors, well-being, service use, divorce processes and cultural orientations.</p>
+        <%= simple_format(@project.description) %> 
       </div><! -- .body -->
       <div class="downloads">
         <p><i class="fa fa-link"></i><a href="http://www.scheidinginvlaanderen.be">www.scheidinginvlaanderen.be</a></p>
