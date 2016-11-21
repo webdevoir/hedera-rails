@@ -17,9 +17,12 @@
       </ul>
     </section>
     <section>
-      <h2>Output</h2>
-      <p>Het veld van ouderengerelateerde gezondheidsinformatie: Een stakeholder analyse<i class="fa fa-download right"></p></i>
-      <p>Pharmaceuticals as solution for health problems: A stakeholder perspective<i class="fa fa-download right"></i></p>
+      <% if @member.publications.any? %>
+        <h2>Output</h2>
+        <% @member.publications.each do |publication| %>
+          <p><%= link_to publication.title, publication_path(publication) %></p>
+        <% end %>
+      <% end %>
     </section>
     <section class="bibliography">
       <h2>Bibliography</h2>

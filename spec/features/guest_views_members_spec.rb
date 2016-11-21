@@ -11,6 +11,9 @@ feature "members" do
   end
 
   scenario "guest views member details" do
+    publication = FactoryGirl.create(:publication)
+    member.publications << publication
+    member.save
     visit members_path
     click_link member.name
     expect(current_path).to eq member_path(member)
@@ -20,6 +23,8 @@ feature "members" do
     expect(page).to have_css "section.contact p", text: member.email
     expect(page).to have_css "section.contact p", text: member.phone
     expect(page).to have_css "section.contact p", text: member.address
+    click_link publication.title
+    expect(current_path).to eq publication_path(publication)
   end
 
   scenario "a guest cannot create members" do
