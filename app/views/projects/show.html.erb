@@ -16,7 +16,12 @@
           <% end %>
           <br>
         <% end %>
-        Contact: <%= @project.contact %> (<i class="fa fa-envelope" ></i><%= mail_to @project.email %>)</p>
+        <% if @project.promotor.present? %>
+          Promotor: <%= @project.promotor %><br>
+        <% end %>
+        <% if @project.contact.present? %>
+          Contact: <%= @project.contact %> (<i class="fa fa-envelope" ></i><%= mail_to @project.email %>)</p>
+        <% end %>
       </header>
       <div class="body">
         <%= simple_format(@project.description) %> 

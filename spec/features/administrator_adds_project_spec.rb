@@ -12,6 +12,7 @@ feature "project" do
     check member.name
     fill_in "Title", with: "Divorce in Flanders"
     fill_in "Description", with: "Divorce in Flanders is an interacademic research project"
+    fill_in "Promotor", with: "Bart Van de Putte"
     fill_in "Contact", with: "Piet Bracke"
     fill_in "Email", with: "piet.bracke@ugent.be"
     fill_in "Link", with: "http://www.scheidinginvlaanderen.be"
@@ -30,6 +31,9 @@ feature "project" do
       expect(page).to have_content "Divorce in Flanders"
       project = Project.last
       expect(page).to have_link member.name
+      expect(page).to have_css "p.details", text: "Piet Bracke"
+      expect(page).to have_link "piet.bracke@ugent.be"
+      expect(page).to have_css "p.details", text: "Bart Van de Putte"
       expect(project).to have_attributes(project_pic_file_name: a_value)
       expect(page).to have_css "div.downloads p", text: "http://www.scheidinginvlaanderen.be"
     end

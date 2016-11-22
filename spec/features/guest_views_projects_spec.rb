@@ -14,7 +14,8 @@ feature "projects" do
     click_link project.title
     expect(page).to have_css "h1", text: project.title
     expect(page).to have_css "div.body p", text: project.description
-    expect(page).to have_content project.contact
+    expect(page).to have_css "p.details", text: project.promotor
+    expect(page).to have_css "p.details", text: project.contact
     expect(page).to have_content project.email
     expect(page).to have_css("img[src*='project_pic']")
   end
