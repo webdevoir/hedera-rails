@@ -1,0 +1,29 @@
+div.news {
+  @include outer-container(80%);
+
+  div.news-list {
+    @include span-columns(12);
+  }
+
+  div.news-item {
+    @include media($medium-screen) {
+      @include span-columns(8 of 12);
+      @include shift(2);
+    }
+    margin-bottom: 3.375em;
+    div.content {
+      @include media($medium-screen) {
+        @include span-columns(6 of 8);
+        float: right;
+      }
+
+    }
+    aside {
+      display: none;
+      @include media($medium-screen) {
+        @include span-columns(2 of 8);
+        float: left;
+      }
+    }
+  }
+}

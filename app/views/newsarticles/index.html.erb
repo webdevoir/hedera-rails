@@ -1,0 +1,23 @@
+<div class="news">
+  <header class="pageheader">
+    <h1>News</h1>
+  </header>
+  <% if user_signed_in? %>
+    <div class="edit">
+      <p><i class="fa fa-plus"></i><%= link_to "Create newsarticle", new_newsarticle_path %></p>
+    </div>
+  <% end %>
+  <div class="news-list">
+  <% @newsarticles.each do |article| %>
+    <div class="news-item">
+      <aside>
+        <%= image_tag article.newsarticle_pic.url(:medium) %>
+      </aside>
+      <div class="content">
+        <h2><%= link_to article.title, newsarticle_path(article) %></h2>    
+          <%= truncate(article.body, :length => 200, :separator => ' ') %>
+      </div><!-- .content -->
+    </div><!-- .news-list -->
+  <% end %>
+  </div><!-- .news-list -->
+</div><!-- .news -->

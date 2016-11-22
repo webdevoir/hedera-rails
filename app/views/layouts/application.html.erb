@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>HederaRails</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <% if flash[:notice] %>
+      <div class="flash-notice">
+        <span><%= notice %></span>
+      </div>
+    <% end %>
+    <% if flash[:alert] %>
+      <div class="flash-alert">
+        <span><%= alert %></span>
+      </div>
+    <% end %>
+    <div class="wrapper">
+      <%= render 'layouts/nav' %>
+      <%= yield %>
+    </div><!-- .wrapper -->
+    <%= render 'layouts/footer' %>
+  </body>
+  <script>
+    $(document).ready(function() {
+      setTimeout(function(){
+        $(".flash-alert, .flash-notice").fadeOut("slow", function() {
+          $(this).remove();
+        });
+      }, 2500);
+    });
+  </script>
+</html>

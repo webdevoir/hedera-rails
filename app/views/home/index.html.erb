@@ -1,0 +1,32 @@
+<div class="home">
+  <div class="banner">
+    <h1>HEALTH AND DEMOGRAPHIC RESEARCH</h1>
+    <p class="tagline">research on crucial life-course transitions</p>
+  </div>
+  <div class="row">
+    <section class="news">
+      <h2>RECENT NEWS</h2>
+      <% @newsarticles.each do |article| %>
+        <article class="newsitem">
+          <aside>
+            <%= image_tag article.newsarticle_pic.url(:small) %>
+          </aside>
+          <div class="content">
+          <header>
+            <h3><%= link_to article.title, article %></h3>
+          </header>
+          <p><%= truncate(article.body, :length => 200, :separator => ' ') %></p>
+          <p class="more"><%= link_to "read article", newsarticle_path(article) %></p>
+          </div><!-- .content -->
+        </article><!-- .newsitem -->
+      <% end %>
+    </section><!-- .news -->
+    <section class="about">
+      <header>
+        <h2>ABOUT HEDERA</h2>
+        <p>Research group Hedera (Health and Demographic Research) at the University of Gent stands for expertise within the fields of Sociology of health, Sociology of the family and Social demography.</p>
+        <p class="more"><a href="/about.html">read more</a></p>
+      </header>
+    </section><!-- .about -->
+  </div>
+</div>

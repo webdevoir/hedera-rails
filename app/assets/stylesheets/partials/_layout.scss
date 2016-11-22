@@ -1,0 +1,52 @@
+span.action {
+  color: $green;
+}
+
+header.pageheader {
+
+
+  margin-top: 3.375em;
+  margin-bottom: 3.375em;
+  h1 {
+    text-align: center;
+  }
+}
+
+i.fa {
+  color: $green;
+  margin-right: .5em;
+}
+
+i.right {
+  margin-left: .5em;
+}
+
+h1 {
+  font-size: modular-scale(3);
+}
+
+h2 {
+  font-size: modular-scale(1);
+}
+
+p {
+  color: $medium-gray;
+}
+
+div.edit {
+  clear: both;
+}
+
+form.form {
+  @include span-columns(6);
+  margin-top: 2.25em;
+}
+
+.breadcrumb {
+  margin-top: 3.375em;
+  margin-bottom: 3.375em;
+  li {
+   display: inline; 
+   font-size: 0.9em;
+  }
+}

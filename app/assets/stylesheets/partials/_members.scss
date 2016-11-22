@@ -1,0 +1,17 @@
+div.people {
+  @include outer-container(80%);
+  margin-bottom: 3.375em;
+
+  div.researchers {
+    @include row();
+    margin-top: 2.25em;
+    text-align: center;
+  }
+
+  div.researcher {
+    @include media($medium-screen) {
+      @include span-columns (3);
+      @include omega(4n);
+    }
+  } 
+}

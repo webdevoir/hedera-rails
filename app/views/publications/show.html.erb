@@ -1,0 +1,43 @@
+<article class="publication-item">
+  <div class="breadcrumb">
+    <ul>
+      <li><%= link_to "Publications", publications_path %> > </li>
+      <li><%= @publication.title %></li>
+    </ul>
+  </div>
+  <header class="pageheader">
+    <h1><%= @publication.title %></h1>
+  </header>
+  <footer class="article">
+    <% if @publication.authors.any? %>
+      <p>Authors:
+        <% @publication.authors.each do |author| %>
+          <%= author.name %><%= ", " unless author == @publication.authors.last %> 
+        <% end %>
+        <%= @publication.external_authors if @publication.authors.present? %>
+      </p>
+    <% end %>
+    <time>
+      <%= @publication.date.strftime('%d %B %Y') %>
+    </time>
+    <% if @publication.link.present? %>
+      <p>Link: <%= link_to @publication.link, @publication.link %></p>
+    <% end %>
+  </footer>
+  <div class="bodytext">
+    <% if @publication.journal.present? %>
+      <p>Journal: <%= @publication.journal %>, vol. <%= @publication.volume %>, issue <%= @publication.issue %>, pp. <%= @publication.pages %></p>
+    <% end %>
+    <% if @publication.congres.present? %>
+      <p>Congres: <%= @publication.congres %><br>
+      location: <%= @publication.location_congres %></p>
+    <% end %>
+  </div>
+  <% if user_signed_in? %>
+    <div class="edit">
+      <p><i class="fa fa-pencil"></i><%= link_to "Edit publication", edit_publication_path(@publication) %>
+    &nbsp;&nbsp;<i class="fa fa-trash"></i><%= link_to "Delete", publication_path(@publication), method: :delete, data: { confirm: "Are you sure?" } %></p>
+    </div>
+  <% end %>
+</article>
+
