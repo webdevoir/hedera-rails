@@ -1,4 +1,6 @@
 class Project < ApplicationRecord
+  has_many :member_projects
+  has_many :members, :through => :member_projects
   validates :title, :description, presence: true
 
   has_attached_file :project_pic,

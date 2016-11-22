@@ -2,12 +2,14 @@ require 'rails_helper'
 
 feature "project" do
   let(:user) { FactoryGirl.create(:user) }
+  let!(:member) { FactoryGirl.create(:member) }
 
   before do
     login_as(user, scope: :user)
   end
 
   def fill_in_fields
+    check member.name
     fill_in "Title", with: "Divorce in Flanders"
     fill_in "Description", with: "Divorce in Flanders is an interacademic research project"
     fill_in "Contact", with: "Piet Bracke"
@@ -27,6 +29,7 @@ feature "project" do
       expect(page).to have_content "Successfully created project."
       expect(page).to have_content "Divorce in Flanders"
       project = Project.last
+      expect(page).to have_link member.name
       expect(project).to have_attributes(project_pic_file_name: a_value)
       expect(page).to have_css "div.downloads p", text: "http://www.scheidinginvlaanderen.be"
     end

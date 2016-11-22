@@ -24,6 +24,12 @@
     <%= f.file_field :project_pic %>
   </div>
   <div>
+     <%= f.label "Researchers" %>
+     <%= f.collection_check_boxes :member_ids, Member.all, :id, :name do |b| %>
+       <%= b.label() { b.check_box + b.text} %>
+     <% end %>
+  </div>
+  <div>
     <%= f.submit %>
     <% if project.new_record? %>
       <%= link_to "Cancel", projects_path %>

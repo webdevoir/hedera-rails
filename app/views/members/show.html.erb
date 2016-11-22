@@ -9,13 +9,16 @@
     <section class="bio">
       <%= simple_format(@member.bio) %>
     </section>
-    <section>
-      <h2>Research</h2>
-      <ul>
-        <li>Medical sociology</li>
-        <li>Sociology of health and illness</li>
-      </ul>
-    </section>
+    <% if @member.projects.any? %>
+      <section>
+        <h2>Research</h2>
+        <ul>
+          <% @member.projects.each do |project| %>
+            <li><%= link_to project.title, project %></li>
+          <% end %>
+        </ul>
+      </section>
+    <% end %>
     <section>
       <% if @member.publications.any? %>
         <h2>Output</h2>

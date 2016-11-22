@@ -10,10 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161121153439) do
+ActiveRecord::Schema.define(version: 20161122090416) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "member_projects", force: :cascade do |t|
+    t.integer "member_id"
+    t.integer "project_id"
+    t.index ["member_id"], name: "index_member_projects_on_member_id", using: :btree
+    t.index ["project_id"], name: "index_member_projects_on_project_id", using: :btree
+  end
 
   create_table "member_publications", force: :cascade do |t|
     t.integer "member_id"
@@ -109,5 +116,7 @@ ActiveRecord::Schema.define(version: 20161121153439) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "member_projects", "members"
+  add_foreign_key "member_projects", "projects"
   add_foreign_key "publications", "publication_categories"
 end

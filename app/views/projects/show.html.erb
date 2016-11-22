@@ -9,7 +9,13 @@
       <header class="articleheader">
         <h1><%= @project.title %></h1>
         <p class="details">
-        Researchers: <a href="#">Elien Colman</a>, <a href="#">Sara Symoens</a><br>
+        <% if @project.members.any? %>
+          Researchers: 
+          <% @project.members.each do |member| %> 
+            <%= link_to member.name, member %><%= ", " unless member == @project.members.last %>
+          <% end %>
+          <br>
+        <% end %>
         Contact: <%= @project.contact %> (<i class="fa fa-envelope" ></i><%= mail_to @project.email %>)</p>
       </header>
       <div class="body">

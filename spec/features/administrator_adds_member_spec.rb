@@ -2,12 +2,14 @@ require 'rails_helper'
 
 feature "member" do
   let(:user) { FactoryGirl.create(:user) }
+  let!(:project) { FactoryGirl.create(:project) }
 
   before do
     login_as(user, scope: :user)
   end
 
   def fill_in_fields
+   check project.title
    fill_in "Name", with: "John Doe"
    fill_in "Title", with: "PhD Researcher"
    fill_in "Email", with: "johndoe@example.com" 
@@ -35,6 +37,7 @@ feature "member" do
       expect(page).to have_content "This is the bio"
       expect(page).to have_content "https://biblio.ugent.be/publication?q=%22Sarah+Van+den+Bogaert%22"
       expect(member).to have_attributes(member_pic_file_name: a_value)
+      expect(page).to have_link project.title
     end
 
     scenario "administrator edits member" do
