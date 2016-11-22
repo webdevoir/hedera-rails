@@ -1,7 +1,7 @@
 class MembersController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   def index
-    @members = Member.all
+    @members = Member.all.order(name: :desc)
   end 
 
   def show
