@@ -33,9 +33,16 @@
     </section><!-- .bibliography -->
     <section class="contact">
       <h2>Contact</h2>
-      <p><i class="fa fa-envelope"></i><%= mail_to @member.email, @member.email %><br>
-      <i class="fa fa-phone"></i><%= link_to @member.phone, @member.phone %><br>
-      <i class="fa fa-map-marker"></i><%= @member.address %></p>
+      <p>
+      <% if @member.email.present? %> 
+        <i class="fa fa-envelope"></i><%= mail_to @member.email, @member.email %><br>
+      <% end %>
+      <% if @member.phone.present? %>
+        <i class="fa fa-phone"></i><%= link_to @member.phone, @member.phone %><br>
+      <% end %>
+      <% if @member.address.present? %>
+        <i class="fa fa-map-marker"></i><%= @member.address %></p>
+      <% end %>
     </section><!-- .contact -->
   </div><!-- .content -->
   <% if user_signed_in? %>
