@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161122125601) do
+ActiveRecord::Schema.define(version: 20161122155011) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,6 +63,10 @@ ActiveRecord::Schema.define(version: 20161122125601) do
     t.datetime "newsarticle_doc_updated_at"
   end
 
+  create_table "project_categories", force: :cascade do |t|
+    t.string "name"
+  end
+
   create_table "projects", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
@@ -74,6 +78,8 @@ ActiveRecord::Schema.define(version: 20161122125601) do
     t.datetime "project_pic_updated_at"
     t.string   "link"
     t.string   "promotor"
+    t.integer  "project_category_id"
+    t.index ["project_category_id"], name: "index_projects_on_project_category_id", using: :btree
   end
 
   create_table "publication_categories", force: :cascade do |t|
@@ -119,5 +125,6 @@ ActiveRecord::Schema.define(version: 20161122125601) do
 
   add_foreign_key "member_projects", "members"
   add_foreign_key "member_projects", "projects"
+  add_foreign_key "projects", "project_categories"
   add_foreign_key "publications", "publication_categories"
 end

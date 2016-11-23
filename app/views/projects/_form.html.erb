@@ -1,5 +1,9 @@
 <%= form_for project, html: { class: "form" } do |f| %>
   <div>
+    <%= f.label :project_category_id, "Category" %>
+    <%= f.select :project_category_id, options_for_project_categories, label: "Category" %>
+  </div>
+  <div>
     <%= f.label :title %>
     <%= f.text_field :title %>
   </div>

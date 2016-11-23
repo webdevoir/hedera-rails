@@ -8,16 +8,31 @@
     </div>
   <% end %>
   <section class="health-sociology">
-    <%= image_tag "health.jpg" %>
+    <img src="/images/health.jpg" />
     <h2>HEALTH SOCIOLOGY</h2>
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
     <% if @projects %>
       <h3>PROJECTS</h3>
       <ul>
         <% @projects.each do |project| %>
-          <li><%= link_to project.title, project %></li>
+          <% if project.project_category.name == "health sociology" %>
+            <li><%= link_to project.title, project %></li>
+          <% end %>
         <% end %>
       </ul>
     <% end %>
   </section><!-- health-sociology -->
+<section class="ethnic-diversity">
+    <img src="/images/elders.jpg" />
+    <h2>ETHNIC DIVERSITY</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    <h3>PROJECTS</h3>
+    <ul>
+        <% @projects.each do |project| %>
+          <% if project.project_category.name == "ethnic diversity" %>
+            <li><%= link_to project.title, project %></li>
+          <% end %>
+        <% end %>
+    </ul>
+</section><!-- health-sociology -->
 </div><!-- .research -->

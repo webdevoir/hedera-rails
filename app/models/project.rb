@@ -1,4 +1,5 @@
 class Project < ApplicationRecord
+  belongs_to :project_category
   has_many :member_projects
   has_many :members, :through => :member_projects
   validates :title, :description, presence: true

@@ -22,6 +22,7 @@ feature "project" do
 
   context "with valid data" do
     scenario "administrator adds project" do
+      #ProjectCategory.create(name: "health sociology")
       visit projects_path
       click_link "Create Project"
       fill_in_fields
@@ -30,6 +31,7 @@ feature "project" do
       expect(page).to have_content "Successfully created project."
       expect(page).to have_content "Divorce in Flanders"
       project = Project.last
+      expect(project.project_category.name).to eq "health sociology"
       expect(page).to have_link member.name
       expect(page).to have_css "p.details", text: "Piet Bracke"
       expect(page).to have_link "piet.bracke@ugent.be"

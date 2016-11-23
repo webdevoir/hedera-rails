@@ -1,7 +1,8 @@
 require 'rails_helper'
 
 feature "projects" do
-  let!(:project) { FactoryGirl.create(:project) }
+  category = ProjectCategory.create(name: "health sociology")
+  let!(:project) { FactoryGirl.create(:project, project_category_id: category.id) }
 
   scenario "guest views projects" do
     visit projects_path
