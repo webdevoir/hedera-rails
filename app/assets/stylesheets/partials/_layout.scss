@@ -42,6 +42,11 @@ form.form {
   margin-top: 2.25em;
 }
 
+form.new_user {
+  @include span-columns(4);
+  @include shift(4);
+}
+
 .breadcrumb {
   margin-top: 3.375em;
   margin-bottom: 3.375em;
