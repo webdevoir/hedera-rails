@@ -18,8 +18,11 @@
           <p><%= truncate(article.body, :length => 200, :separator => ' ') %></p>
           <p class="more"><%= link_to "read article", newsarticle_path(article) %></p>
           </div><!-- .content -->
-        </article><!-- .newsitem -->
       <% end %>
+        </article><!-- .newsitem -->
+        <div class="all_newsarticles">
+          <p class="more"><%= link_to "All Newsarticles", newsarticles_path %></p>
+        </div>
     </section><!-- .news -->
     <section class="about">
       <header>

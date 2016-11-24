@@ -49,6 +49,13 @@ div.row {
     }
   }
 
+  section.news {
+    div.all_newsarticles {
+      clear: both;
+      text-align: right;
+    }
+  }
+
   article.newsitem {
     .content {
       @include span-columns(5 of 6);
