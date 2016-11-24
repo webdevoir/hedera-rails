@@ -35,7 +35,10 @@ html, body {
     clear: both;
     display: block;
     margin: 0 auto;
-    width: 15%;
+    width: 70%;
+    @include media(medium-screen) {
+      width: 15%;
+    }
   }
 
   .footer-logo {
