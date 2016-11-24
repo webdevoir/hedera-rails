@@ -1,5 +1,8 @@
 div.about {
-  @include outer-container(80%);
+  @include outer-container(90%);
+  @include media($medium-screen) {
+    @include outer-container(80%);
+  }
   div.content {
     @include media($medium-screen) {
       @include span-columns(6);

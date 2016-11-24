@@ -1,5 +1,8 @@
 div.research {
-  @include outer-container(80%);
+  @include outer-container(90%);
+  @include media($medium-screen) {
+    @include outer-container(80%);
+  }
 
   section.health-sociology, section.ethnic-diversity {
     @include media($medium-screen) {

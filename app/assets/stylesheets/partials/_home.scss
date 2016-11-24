@@ -19,7 +19,10 @@ div.banner {
 }
 
 div.row {
-  @include outer-container(80%);
+  @include outer-container(90%);
+  @include media($medium-screen) {
+    @include outer-container(80%);
+  }
   @include clearfix;
   margin-top: 3.375em;
 

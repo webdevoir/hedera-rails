@@ -1,5 +1,8 @@
 .publication-item {
-  @include outer-container(80%);
+  @include outer-container(90%);
+  @include media($medium-screen) {
+    @include outer-container(80%);
+  }
   header.pageheader {
     margin-bottom: 0;
     h1 {

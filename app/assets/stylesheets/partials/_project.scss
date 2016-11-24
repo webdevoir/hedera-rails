@@ -1,5 +1,8 @@
 div.project {
-  @include outer-container(80%);
+  @include outer-container(90%);
+  @include media($medium-screen) {
+    @include outer-container(80%);
+  }
   article {
     margin-top: 5.063em;
   }
