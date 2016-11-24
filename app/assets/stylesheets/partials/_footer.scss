@@ -36,7 +36,7 @@ html, body {
     display: block;
     margin: 0 auto;
     width: 70%;
-    @include media(medium-screen) {
+    @include media($medium-screen) {
       width: 15%;
     }
   }
