@@ -2,9 +2,9 @@ class Member < ApplicationRecord
   extend FriendlyId
   friendly_id :name, use: :slugged
 
-  has_many :member_publications
+  has_many :member_publications, :dependent => :destroy
   has_many :publications, :through => :member_publications
-  has_many :member_projects
+  has_many :member_projects, :dependent => :destroy
   has_many :projects, :through => :member_projects
   has_attached_file :member_pic,
   styles: { medium: "250x250#" },
