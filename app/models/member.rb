@@ -1,4 +1,7 @@
 class Member < ApplicationRecord
+  extend FriendlyId
+  friendly_id :name, use: :slugged
+
   has_many :member_publications
   has_many :publications, :through => :member_publications
   has_many :member_projects

@@ -38,7 +38,7 @@ feature "publication" do
       expect(publication.authors.count).to eq 1
       expect(page).to have_css "footer  p", text: member.name
       expect(page).to have_css "footer p", text:  "Mark Elchardus"
-      expect(current_path).to eq publication_path(publication.id)
+      expect(current_path).to eq "/publications/#{publication.slug}"
       expect(page).to have_css "h1", text: "Gezondheidsinformatie, waar komt dat vandaan?"
       expect(page).to have_css "time", text: "22 June 2015"
       expect(publication.year).to eq 2015

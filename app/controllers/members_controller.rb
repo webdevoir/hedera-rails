@@ -5,7 +5,7 @@ class MembersController < ApplicationController
   end 
 
   def show
-    @member = Member.find(params[:id])
+    @member = Member.friendly.find(params[:id])
   end
 
   def new
@@ -23,11 +23,11 @@ class MembersController < ApplicationController
   end
 
   def edit
-    @member = Member.find(params[:id])
+    @member = Member.friendly.find(params[:id])
   end
 
   def update
-    @member = Member.find(params[:id])
+    @member = Member.friendly.find(params[:id])
     if @member.update(member_params)
       redirect_to @member, notice: "Successfully updated member."
     else
@@ -37,7 +37,7 @@ class MembersController < ApplicationController
   end
 
   def destroy
-    @member = Member.find(params[:id])
+    @member = Member.friendly.find(params[:id])
     @member.destroy
     redirect_to members_path, notice: "Successfully deleted member."
   end

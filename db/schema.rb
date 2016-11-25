@@ -10,10 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161122155011) do
+ActiveRecord::Schema.define(version: 20161125085954) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "friendly_id_slugs", force: :cascade do |t|
+    t.string   "slug",                      null: false
+    t.integer  "sluggable_id",              null: false
+    t.string   "sluggable_type", limit: 50
+    t.string   "scope"
+    t.datetime "created_at"
+    t.index ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true, using: :btree
+    t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", using: :btree
+    t.index ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
+    t.index ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
+  end
 
   create_table "member_projects", force: :cascade do |t|
     t.integer "member_id"
@@ -43,6 +55,8 @@ ActiveRecord::Schema.define(version: 20161122155011) do
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
     t.string   "title"
+    t.string   "slug"
+    t.index ["slug"], name: "index_members_on_slug", unique: true, using: :btree
   end
 
   create_table "newsarticles", force: :cascade do |t|
@@ -79,7 +93,9 @@ ActiveRecord::Schema.define(version: 20161122155011) do
     t.string   "link"
     t.string   "promotor"
     t.integer  "project_category_id"
+    t.string   "slug"
     t.index ["project_category_id"], name: "index_projects_on_project_category_id", using: :btree
+    t.index ["slug"], name: "index_projects_on_slug", unique: true, using: :btree
   end
 
   create_table "publication_categories", force: :cascade do |t|
@@ -103,7 +119,9 @@ ActiveRecord::Schema.define(version: 20161122155011) do
     t.string   "journal"
     t.string   "congres"
     t.string   "location_congres"
+    t.string   "slug"
     t.index ["publication_category_id"], name: "index_publications_on_publication_category_id", using: :btree
+    t.index ["slug"], name: "index_publications_on_slug", unique: true, using: :btree
   end
 
   create_table "users", force: :cascade do |t|

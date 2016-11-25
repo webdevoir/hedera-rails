@@ -1,4 +1,7 @@
 class Publication < ApplicationRecord
+  extend FriendlyId
+  friendly_id :title, use: :slugged
+
   belongs_to :publication_category
   has_many :member_publications
   has_many :authors, :through => :member_publications, :source => :member

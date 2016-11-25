@@ -29,7 +29,7 @@ feature "member" do
       click_button "Create Member"
       expect(page).to have_content "Successfully created member."
       member = Member.last
-      expect(current_path).to eq member_path(member.id)
+      expect(current_path).to eq "/members/#{member.slug}"
       expect(page).to have_content "John Doe"
       expect(page).to have_link "johndoe@example.com"
       expect(page).to have_content "123.456.78"

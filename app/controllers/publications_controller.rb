@@ -10,7 +10,7 @@ class PublicationsController < ApplicationController
   end
 
   def show
-    @publication = Publication.find(params[:id])
+    @publication = Publication.friendly.find(params[:id])
   end
 
   def new
@@ -28,11 +28,11 @@ class PublicationsController < ApplicationController
   end
 
   def edit
-    @publication = Publication.find(params[:id])
+    @publication = Publication.friendly.find(params[:id])
   end
 
   def update
-    @publication = Publication.find(params[:id])
+    @publication = Publication.friendly.find(params[:id])
     if @publication.update(publication_params)
       redirect_to @publication, notice: "Successfully updated publication."
     else
@@ -42,7 +42,7 @@ class PublicationsController < ApplicationController
   end
 
   def destroy
-    @publication = Publication.find(params[:id])
+    @publication = Publication.friendly.find(params[:id])
     @publication.destroy
     redirect_to publications_path, notice: "Successfully deleted publication."
   end

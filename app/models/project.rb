@@ -1,4 +1,7 @@
 class Project < ApplicationRecord
+  extend FriendlyId
+  friendly_id :title, use: :slugged
+
   belongs_to :project_category
   has_many :member_projects
   has_many :members, :through => :member_projects
