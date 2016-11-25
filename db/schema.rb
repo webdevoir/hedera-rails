@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161125085954) do
+ActiveRecord::Schema.define(version: 20161125094617) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -75,6 +75,8 @@ ActiveRecord::Schema.define(version: 20161125085954) do
     t.string   "newsarticle_doc_content_type"
     t.integer  "newsarticle_doc_file_size"
     t.datetime "newsarticle_doc_updated_at"
+    t.string   "slug"
+    t.index ["slug"], name: "index_newsarticles_on_slug", unique: true, using: :btree
   end
 
   create_table "project_categories", force: :cascade do |t|

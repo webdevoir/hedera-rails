@@ -1,11 +1,11 @@
 class NewsarticlesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   def index
-    @newsarticles = Newsarticle.all
+    @newsarticles = Newsarticle.all.order("created_at")
   end
 
   def show
-    @newsarticle = Newsarticle.find(params[:id])
+    @newsarticle = Newsarticle.friendly.find(params[:id])
   end
 
   def new
@@ -23,11 +23,11 @@ class NewsarticlesController < ApplicationController
   end
 
   def edit
-    @newsarticle = Newsarticle.find(params[:id])
+    @newsarticle = Newsarticle.friendly.find(params[:id])
   end
 
   def update
-    @newsarticle = Newsarticle.find(params[:id])
+    @newsarticle = Newsarticle.friendly.find(params[:id])
     if @newsarticle.update(newsarticle_params)
       redirect_to @newsarticle, notice: "Successfully updated newsarticle."
     else
@@ -37,7 +37,7 @@ class NewsarticlesController < ApplicationController
   end
 
   def destroy
-    @newsarticle = Newsarticle.find(params[:id])
+    @newsarticle = Newsarticle.friendly.find(params[:id])
     @newsarticle.destroy
     redirect_to newsarticles_path, notice: "Successfully deleted newsarticle."
   end

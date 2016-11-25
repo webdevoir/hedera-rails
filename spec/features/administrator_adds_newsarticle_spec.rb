@@ -24,7 +24,7 @@ feature "newsarticle" do
       fill_in_fields
       click_button "Create Newsarticle"
       newsarticle = Newsarticle.last
-      expect(current_path).to eq newsarticle_path(newsarticle.id)
+      expect(current_path).to eq "/newsarticles/#{newsarticle.slug}"
       expect(page).to have_content "Successfully created newsarticle."
       expect(page).to have_css "h1", text: "Medsoc conference"
       expect(page).to have_css ".content p", text: "This is the body text"

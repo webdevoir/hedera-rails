@@ -1,4 +1,6 @@
 class Newsarticle < ApplicationRecord
+  extend FriendlyId
+  friendly_id :title, use: :slugged
 
   has_attached_file :newsarticle_pic,
   styles: { small: "50x50#", medium: "225x150#", large: "450x300#" },
