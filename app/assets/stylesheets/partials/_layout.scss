@@ -29,6 +29,11 @@ h2 {
   font-size: modular-scale(1);
 }
 
+h2.login {
+  text-align: center;
+  margin-top: 2.25em;
+}
+
 p {
   color: $medium-gray;
 }
