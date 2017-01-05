@@ -1,0 +1,6 @@
+div.error {
+  @include outer-container(90%);
+  @include media($medium-screen) {
+    @include outer-container(80%);
+  }
+}
