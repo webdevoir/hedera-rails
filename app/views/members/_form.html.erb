@@ -1,5 +1,9 @@
 <%= form_for member, html: { multipart: true, class: "form" } do |f| %>
   <div>
+    <%= f.label :active %>
+    <%= f.check_box :active %>
+  </div>
+  <div>
     <%= f.label :name %>
     <%= f.text_field :name %>
   </div>

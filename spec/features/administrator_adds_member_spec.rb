@@ -37,6 +37,7 @@ feature "member" do
       expect(page).to have_content "This is the bio"
       expect(page).to have_content "https://biblio.ugent.be/publication?q=%22Sarah+Van+den+Bogaert%22"
       expect(member).to have_attributes(member_pic_file_name: a_value)
+      expect(member.active).to be true
       expect(page).to have_link project.title
     end
 
@@ -49,6 +50,16 @@ feature "member" do
       member.reload
       expect(member.name).to eq "Jane Doe"
       expect(page).to have_content "Successfully updated member."
+    end
+
+    scenario "administrator makes member non-active" do
+      member = FactoryGirl.create(:member)
+      visit member_path(member)
+      click_link "Edit member"
+      uncheck "Active"
+      click_button "Update Member"
+      member.reload
+      expect(member.active).to eq false 
     end
 
     scenario "administrator deletes member" do
