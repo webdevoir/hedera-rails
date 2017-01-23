@@ -27,6 +27,22 @@ feature "members" do
     expect(current_path).to eq publication_path(publication)
   end
 
+  scenario "guest does not see bibliography when member not active" do
+    member.active = false
+    member.save
+    visit members_path
+    click_link member.name
+    expect(page).not_to have_content member.bibliography
+  end
+
+  scenario "guest does not see address when member not active" do
+    member.active = false
+    member.save
+    visit members_path
+    click_link member.name
+    expect(page).not_to have_content member.address
+  end
+
   scenario "a guest cannot create members" do
     visit members_path
     expect(page).not_to have_link "Create member"

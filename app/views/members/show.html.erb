@@ -27,23 +27,27 @@
         <% end %>
       <% end %>
     </section>
-    <section class="bibliography">
-      <h2>Bibliography</h2>
-      <p><%= link_to @member.bibliography, @member.bibliography %></p>
-    </section><!-- .bibliography -->
-    <section class="contact">
-      <h2>Contact</h2>
-      <p>
-      <% if @member.email.present? %> 
-        <i class="fa fa-envelope"></i><%= mail_to @member.email, @member.email %><br>
-      <% end %>
-      <% if @member.phone.present? %>
-        <i class="fa fa-phone"></i><%= link_to @member.phone, @member.phone %><br>
-      <% end %>
-      <% if @member.address.present? %>
-        <i class="fa fa-map-marker"></i><%= @member.address %></p>
-      <% end %>
+    <% if @member.active %>
+      <section class="bibliography">
+        <h2>Bibliography</h2>
+        <p><%= link_to @member.bibliography, @member.bibliography %></p>
+      </section><!-- .bibliography -->
+    <% end %>
+    <% if @member.active %>
+      <section class="contact">
+        <h2>Contact</h2>
+        <p>
+        <% if @member.email.present? %> 
+          <i class="fa fa-envelope"></i><%= mail_to @member.email, @member.email %><br>
+        <% end %>
+        <% if @member.phone.present? %>
+          <i class="fa fa-phone"></i><%= link_to @member.phone, @member.phone %><br>
+        <% end %>
+        <% if @member.address.present? %>
+          <i class="fa fa-map-marker"></i><%= @member.address %></p>
+        <% end %>
     </section><!-- .contact -->
+    <% end %>
   </div><!-- .content -->
   <% if user_signed_in? %>
     <div class="edit">

@@ -8,11 +8,24 @@
     </div>
   <% end %>
   <div class="researchers">
+    <h2>Current Members</h2>
     <% @members.each do |member| %>
-      <div class="researcher">
-        <%= image_tag member.member_pic.url(:medium) %>
-        <p><%= link_to member.name, member_path(member) %><br><%= member.title %></p>
-      </div><!-- .researcher -->
+      <% if member.active %>
+        <div class="researcher">
+          <%= image_tag member.member_pic.url(:medium) %>
+          <p><%= link_to member.name, member_path(member) %><br><%= member.title %></p>
+        </div><!-- .researcher -->
+      <% end %>
+    <% end %>
+  </div><!-- .researchers -->
+  <div class="past-researchers">
+    <h2>Past Members</h2>
+    <% @members.each do |member| %>
+      <% if !member.active %>
+        <div class="researcher">
+          <p><%= link_to member.name, member_path(member) %><br><%= member.title %></p>
+        </div><!-- .researcher -->
+      <% end %>
     <% end %>
   </div><!-- .researchers -->
 </div><!-- .people -->

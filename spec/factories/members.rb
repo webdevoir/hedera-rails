@@ -1,5 +1,6 @@
 FactoryGirl.define do
   factory :member do
+    active true
     title { Faker::Lorem.word }
     name { Faker::Name.name }
     email { Faker::Internet.email }
