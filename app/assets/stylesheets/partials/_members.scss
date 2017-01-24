@@ -3,6 +3,10 @@ div.people {
   @include media($medium-screen) {
     @include outer-container(80%);
   }
+
+  .filter {
+    @include span-columns(5);
+  }
   margin-bottom: 3.375em;
 
   div.researchers {

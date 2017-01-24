@@ -14,4 +14,13 @@ class Member < ApplicationRecord
 
   validates :name, presence: true
   validates :bibliography, format: URI::regexp(%w(http https)), allow_blank: true
+  scope :filter_by_status, ->(status){ filter(status).order(:name) }
+
+  private
+
+  def self.filter(filter)
+    if filter
+      where(status_id: filter)
+    end
+  end
 end

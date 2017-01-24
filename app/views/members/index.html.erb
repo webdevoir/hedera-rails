@@ -7,6 +7,12 @@
       <p><i class="fa fa-plus"></i><%= link_to "Create member", new_member_path %></p>
     </div>
   <% end %>
+  <div class="filter">
+      <%= form_tag members_path, method: "get", id: "filter", class: "filter" do %>
+      <%= label_tag "Status" %>
+      <%= select "member", "status", options_for_select(options_for_statuses, selected: @selected), {prompt: 'All'}, onchange: "$('#filter').submit();" %>
+    <% end %>
+    </div>
   <div class="researchers">
     <h2>Current Members</h2>
     <% @members.each do |member| %>
