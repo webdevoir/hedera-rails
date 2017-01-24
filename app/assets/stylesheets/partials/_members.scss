@@ -9,6 +9,9 @@ div.people {
     @include row();
     margin-top: 2.25em;
     text-align: center;
+    h2 {
+      margin-bottom: 3.375em;
+    }
   }
 
   div.researcher {

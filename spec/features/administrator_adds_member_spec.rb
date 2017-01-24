@@ -10,6 +10,7 @@ feature "member" do
 
   def fill_in_fields
    check project.title
+   select "professor", from: "Status"
    fill_in "Name", with: "John Doe"
    fill_in "Title", with: "PhD Researcher"
    fill_in "Email", with: "johndoe@example.com" 
@@ -23,6 +24,7 @@ feature "member" do
 
   context "with valid data" do
     scenario "administrator adds member" do
+      Status.create!(name: "professor")
       visit members_path
       click_link "Create member"
       fill_in_fields
@@ -30,6 +32,7 @@ feature "member" do
       expect(page).to have_content "Successfully created member."
       member = Member.last
       expect(current_path).to eq "/members/#{member.slug}"
+      expect(page).to have_content "Professor"
       expect(page).to have_content "John Doe"
       expect(page).to have_link "johndoe@example.com"
       expect(page).to have_content "123.456.78"

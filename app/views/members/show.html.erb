@@ -6,6 +6,9 @@
     <%= image_tag @member.member_pic.url(:medium)  %>
   </aside>
   <div class="content">
+    <% if @status %>
+      <p>Status: <%= @status.capitalize %></p>
+    <% end %>
     <section class="bio">
       <%= simple_format(@member.bio) %>
     </section>

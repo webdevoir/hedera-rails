@@ -12,6 +12,8 @@ feature "members" do
 
   scenario "guest views member details" do
     publication = FactoryGirl.create(:publication)
+    status = Status.create(name: "professor")
+    member.status_id = status.id
     member.publications << publication
     member.save
     visit members_path

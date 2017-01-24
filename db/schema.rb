@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170123150430) do
+ActiveRecord::Schema.define(version: 20170124080507) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,7 +57,9 @@ ActiveRecord::Schema.define(version: 20170123150430) do
     t.string   "title"
     t.string   "slug"
     t.boolean  "active",                  default: true
+    t.integer  "status_id"
     t.index ["slug"], name: "index_members_on_slug", unique: true, using: :btree
+    t.index ["status_id"], name: "index_members_on_status_id", using: :btree
   end
 
   create_table "newsarticles", force: :cascade do |t|
@@ -127,6 +129,10 @@ ActiveRecord::Schema.define(version: 20170123150430) do
     t.index ["slug"], name: "index_publications_on_slug", unique: true, using: :btree
   end
 
+  create_table "statuses", force: :cascade do |t|
+    t.string "name"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -146,6 +152,7 @@ ActiveRecord::Schema.define(version: 20170123150430) do
 
   add_foreign_key "member_projects", "members"
   add_foreign_key "member_projects", "projects"
+  add_foreign_key "members", "statuses"
   add_foreign_key "projects", "project_categories"
   add_foreign_key "publications", "publication_categories"
 end

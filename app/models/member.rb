@@ -2,6 +2,7 @@ class Member < ApplicationRecord
   extend FriendlyId
   friendly_id :name, use: :slugged
 
+  belongs_to :status
   has_many :member_publications, :dependent => :destroy
   has_many :publications, :through => :member_publications
   has_many :member_projects, :dependent => :destroy

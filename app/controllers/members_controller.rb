@@ -6,6 +6,7 @@ class MembersController < ApplicationController
 
   def show
     @member = Member.friendly.find(params[:id])
+    @status = @member.status.name
   end
 
   def new
@@ -45,6 +46,6 @@ class MembersController < ApplicationController
   private
 
   def member_params
-    params.required(:member).permit(:active, :name, :title, :email, :phone, :address, :bio, :bibliography, :member_pic, :project_ids => [])
+    params.required(:member).permit(:active, :status_id, :name, :title, :email, :phone, :address, :bio, :bibliography, :member_pic, :project_ids => [])
   end
 end
