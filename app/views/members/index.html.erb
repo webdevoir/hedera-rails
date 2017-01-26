@@ -18,7 +18,9 @@
     <% @members.each do |member| %>
       <% if member.active %>
         <div class="researcher">
-          <%= image_tag member.member_pic.url(:medium) %>
+          <%= link_to member_path(member) do %>
+            <%= image_tag member.member_pic.url(:medium) %>
+          <% end %>
           <p><%= link_to member.name, member_path(member) %><br><%= member.title %></p>
         </div><!-- .researcher -->
       <% end %>
