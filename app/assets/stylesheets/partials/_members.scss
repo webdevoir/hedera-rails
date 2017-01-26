@@ -12,14 +12,14 @@ div.people {
   }
   margin-bottom: 3.375em;
 
+  h2 {
+    margin-bottom: 3.375em;
+    text-align: center;
+  }
   div.researchers {
-    @include row();
     @include clearfix;
     margin-top: 2.25em;
     text-align: center;
-    h2 {
-      margin-bottom: 3.375em;
-    }
   }
 
   div.researcher {

@@ -13,8 +13,8 @@
       <%= select "member", "status", options_for_select(options_for_statuses, selected: @selected), {prompt: 'All'}, onchange: "$('#filter').submit();" %>
     <% end %>
     </div>
+  <h2>Current Members</h2>
   <div class="researchers">
-    <h2>Current Members</h2>
     <% @members.each do |member| %>
       <% if member.active %>
         <div class="researcher">
@@ -26,8 +26,8 @@
       <% end %>
     <% end %>
   </div><!-- .researchers -->
+  <h2>Past Members</h2>
   <div class="researchers">
-    <h2>Past Members</h2>
     <% @members.each do |member| %>
       <% if !member.active %>
         <div class="researcher">
