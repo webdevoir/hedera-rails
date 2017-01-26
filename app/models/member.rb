@@ -9,7 +9,7 @@ class Member < ApplicationRecord
   has_many :projects, :through => :member_projects
   has_attached_file :member_pic,
   styles: { medium: "250x250#" },
-  default_url: "/images/:style/missing.png"
+  default_url: "/assets/:style/missing.png"
   validates_attachment_content_type :member_pic, content_type: /\Aimage\/.*\Z/
 
   validates :name, presence: true
