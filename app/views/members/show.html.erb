@@ -2,9 +2,11 @@
   <header class="pageheader">
     <h1><%= @member.name %></h1>
   </header>
-  <aside>
-    <%= image_tag @member.member_pic.url(:medium)  %>
-  </aside>
+  <% if @member.active %>
+    <aside>
+      <%= image_tag @member.member_pic.url(:medium)  %>
+    </aside>
+  <% end %>
   <div class="content">
     <% if @status %>
       <p>Status: <%= @status.capitalize %></p>

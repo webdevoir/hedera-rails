@@ -45,6 +45,14 @@ feature "members" do
     expect(page).not_to have_content member.address
   end
 
+  scenario "guest does not see image when member not active" do
+    member.active = false
+    member.save
+    visit members_path
+    click_link member.name
+    expect(page).not_to have_css("img[src*='member_pic']")
+  end
+
   scenario "a guest cannot create members" do
     visit members_path
     expect(page).not_to have_link "Create member"
