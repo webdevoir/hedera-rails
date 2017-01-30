@@ -24,14 +24,6 @@
         </ul>
       </section>
     <% end %>
-    <section>
-      <% if @member.publications.any? %>
-        <h2>Output</h2>
-        <% @member.publications.each do |publication| %>
-          <p><%= link_to publication.title, publication_path(publication) %></p>
-        <% end %>
-      <% end %>
-    </section>
     <% if @member.active %>
       <section class="bibliography">
         <h2>Bibliography</h2>

@@ -25,8 +25,6 @@ feature "members" do
     expect(page).to have_css "section.contact p", text: member.email
     expect(page).to have_css "section.contact p", text: member.phone
     expect(page).to have_css "section.contact p", text: member.address
-    click_link publication.title
-    expect(current_path).to eq publication_path(publication)
   end
 
   scenario "guest does not see bibliography when member not active" do
