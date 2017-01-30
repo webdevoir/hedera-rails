@@ -7,6 +7,9 @@ div.publications {
   div.publications-list {
     @include media($medium-screen) {
       @include span-columns(8);
+      li {
+        line-height: 3.375em;
+      }
     }
     margin-bottom: 3.375em;
     p.all {
