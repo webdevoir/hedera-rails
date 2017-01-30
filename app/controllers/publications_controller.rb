@@ -1,7 +1,7 @@
 class PublicationsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :sort, :show]
   def index
-    @publications = Publication.order(publication_category_id: :desc).order(date: :desc)
+    @publications = Publication.order(publication_category_id: :desc).order(created_at: :desc)
   end
 
   def sort
@@ -50,6 +50,6 @@ class PublicationsController < ApplicationController
   private
 
   def publication_params
-    params.required(:publication).permit(:publication_category_id, :title, :date, :year, :link, :journal, :volume, :pages, :issue, :external_authors, :congres, :location_congres, :author_ids => [])
+    params.required(:publication).permit(:publication_category_id, :title, :link)
   end
 end
