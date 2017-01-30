@@ -14,7 +14,6 @@ feature "publications" do
     visit publications_path
     click_link publication.title
     expect(page).to have_css "h1", text: publication.title
-    expect(page).to have_css "time", text: publication.date.strftime('%d %B %Y')
     expect(page).to have_content publication.link
   end
 

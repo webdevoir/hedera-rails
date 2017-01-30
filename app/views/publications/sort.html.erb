@@ -9,11 +9,8 @@
     </ul>
   </div>
   <% if @publications.any? %>
-    <% @publications.each do |year, publications| %>
-      <h2><%= year %></h2>
-      <% publications.each do |pub| %>
+    <% @publications.each do |pub| %>
         <p><%= link_to pub.title, publication_path(pub) %></p>
-      <% end %>
     <% end %>
   <% end %>
 </div>

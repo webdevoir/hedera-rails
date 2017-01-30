@@ -6,7 +6,7 @@ class PublicationsController < ApplicationController
 
   def sort
     @category = PublicationCategory.find_by_name(params[:category])
-    @publications = Publication.sort_by_category(@category.id).grouped_by_year
+    @publications = Publication.sort_by_category(@category.id)
   end
 
   def show
