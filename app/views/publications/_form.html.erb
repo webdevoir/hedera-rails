@@ -4,8 +4,20 @@
     <%= f.select :publication_category_id, options_for_publication_categories, label: "Category" %>
   </div>
   <div>
+    <%= f.label :authors %>
+    <%= f.text_area :authors %>
+  </div>
+  <div>
+    <%= f.label :year %>
+    <%= f.number_field :year %>
+  </div>
+  <div>
     <%= f.label :title %>
     <%= f.text_area :title, rows: "5" %>
+  </div>
+  <div>
+    <%= f.label :edition %>
+    <%= f.text_field :edition %>
   </div>
   <div>
     <%= f.label :link %>

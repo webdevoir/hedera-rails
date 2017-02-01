@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170131080207) do
+ActiveRecord::Schema.define(version: 20170201140448) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -124,6 +124,8 @@ ActiveRecord::Schema.define(version: 20170131080207) do
     t.string   "congres"
     t.string   "location_congres"
     t.string   "slug"
+    t.string   "authors"
+    t.string   "edition"
     t.index ["publication_category_id"], name: "index_publications_on_publication_category_id", using: :btree
     t.index ["slug"], name: "index_publications_on_slug", unique: true, using: :btree
   end
