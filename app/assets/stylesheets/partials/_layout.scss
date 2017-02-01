@@ -47,6 +47,10 @@ form.form {
   margin-top: 2.25em;
 }
 
+input[type=number]{
+  width: 80px;
+}
+
 form.new_user {
   @include span-columns(4);
   @include shift(4);
