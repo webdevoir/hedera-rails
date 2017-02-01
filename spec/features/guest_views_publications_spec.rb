@@ -7,6 +7,10 @@ feature "publications" do
   scenario "guest views publications" do
     visit publications_path
     expect(page).to have_css "h1", text: "Publications"
+    expect(page).to have_css "li", text: publication.authors
+    expect(page).to have_css "li", text: publication.year
+    expect(page).to have_css "li", text: publication.title
+    expect(page).to have_css "li", text: publication.edition
     expect(page).to have_content(publication.title)
   end
 
@@ -20,7 +24,10 @@ feature "publications" do
   scenario "guest views all publications for a given publication category" do
     visit publications_path
     click_link "all publications for #{category.name}"
-    expect(page).to have_css "p", text: publication.title
+    expect(page).to have_css "li", text: publication.authors
+    expect(page).to have_css "li", text: publication.year
+    expect(page).to have_css "li", text: publication.title
+    expect(page).to have_css "li", text: publication.edition
     expect(current_path).to eq sortedpublications_path(category.name)
   end
 

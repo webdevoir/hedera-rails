@@ -12,7 +12,7 @@
           <h2><%= category %></h2>
           <ul>
             <% publications.take(3).each do |publication| %> 
-              <li><%= link_to publication.title, publication_path(publication) %></li>
+              <li><%= link_to format_publication(publication), publication %></li>
             <% end %>
           </ul>
           <p class="all"><%= link_to "all publications for #{category} ...", sortedpublications_path(category) %></p>

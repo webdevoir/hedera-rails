@@ -10,11 +10,14 @@
   </div>
   <% if @publications.any? %>
     <div class="publications-list">
-      <ul>
-      <% @publications.each do |pub| %>
-          <li><%= link_to pub.title, publication_path(pub) %></li>
+      <% @publications.each do |year, publications| %>
+          <h2><%= year %></h2>
+          <ul>
+            <% publications.each do |publication| %>
+              <li><%= link_to format_publication(publication), publication %></li>
+            <% end %>
+          </ul>
       <% end %>
-      </ul>
     </div>
   <% end %>
 </div>

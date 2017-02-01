@@ -10,4 +10,8 @@ module ApplicationHelper
   def options_for_statuses
     Status.all.map { |status| [status.name, status.id] }
   end
+
+  def format_publication(publication)
+    "#{publication.authors} (#{publication.year}). #{publication.title}. #{publication.edition}."
+  end
 end

@@ -2,6 +2,9 @@ require 'rails_helper'
 
 RSpec.describe Publication, type: :model do
  it { should belong_to(:publication_category) }
+ it { should validate_presence_of(:authors) } 
+ it { should validate_presence_of(:year) } 
+ it { should validate_numericality_of(:year) }
  it { should validate_presence_of(:title) } 
 
  it "accepts properly formatted links" do
