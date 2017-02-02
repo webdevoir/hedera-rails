@@ -12,6 +12,6 @@ module ApplicationHelper
   end
 
   def format_publication(publication)
-    "#{publication.authors} (#{publication.publication_year}). #{publication.title}. #{publication.edition}."
+    "#{publication.authors} (#{publication.publication_year}) #{publication.title} #{publication.edition}"
   end
 end
