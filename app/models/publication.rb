@@ -7,9 +7,9 @@ class Publication < ApplicationRecord
   end
 
   belongs_to :publication_category
-  validates :authors, :year, :title, presence: true
-  validates :year, numericality: true
+  validates :authors, :publication_year, :title, presence: true
+  validates :publication_year, numericality: true
   validates :link, format: URI::regexp(%w(http https)), allow_blank: true
-  scope :sort_by_category, ->(category_id){ all.where(publication_category_id: category_id).order('created_at desc') }
-  scope :grouped_by_year, ->{ order(year: :desc).group_by { |p| p.year} }
+  scope :sort_by_category, ->(category_id){ all.where(publication_category_id: category_id) }
+  scope :grouped_by_year, ->{ order(publication_year: :desc).group_by { |p| p.publication_year} }
 end

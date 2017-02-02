@@ -8,7 +8,7 @@ feature "publications" do
     visit publications_path
     expect(page).to have_css "h1", text: "Publications"
     expect(page).to have_css "li", text: publication.authors
-    expect(page).to have_css "li", text: publication.year
+    expect(page).to have_css "li", text: publication.publication_year
     expect(page).to have_css "li", text: publication.title
     expect(page).to have_css "li", text: publication.edition
     expect(page).to have_content(publication.title)
@@ -25,7 +25,7 @@ feature "publications" do
     visit publications_path
     click_link "all publications for #{category.name}"
     expect(page).to have_css "li", text: publication.authors
-    expect(page).to have_css "li", text: publication.year
+    expect(page).to have_css "li", text: publication.publication_year
     expect(page).to have_css "li", text: publication.title
     expect(page).to have_css "li", text: publication.edition
     expect(current_path).to eq sortedpublications_path(category.name)
