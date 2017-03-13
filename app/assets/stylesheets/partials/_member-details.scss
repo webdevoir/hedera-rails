@@ -6,6 +6,15 @@ article.person {
   margin-bottom: 3.375em;
 
   aside {
+    img {
+      margin: 0 auto;
+      display: block;
+      width: 80%;
+      margin-bottom: 1.5em;
+      @include media($medium-screen) {
+        width: 50%;
+      }
+      }
     @include media($medium-screen) {
       @include span-columns(4);
       float: right;
