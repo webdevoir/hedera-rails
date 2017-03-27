@@ -91,6 +91,10 @@
     }
   }
 
+  ul li.active a {
+    color: $action-color;
+  }
+
   li.nav-link a {
     display: inline-block;
     color: $dark-gray;
