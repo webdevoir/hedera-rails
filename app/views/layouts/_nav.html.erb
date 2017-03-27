@@ -19,12 +19,7 @@
   </div>
 </header>
 <script>
-$(document).ready(function () {
-    $('.navigation-menu  a').click(function () {
-        //removing the previous selected menu state
-        $('.navigation-menu').find('li.active').removeClass('active');
-        //adding the state for this parent menu
-        $(this).parents("li").addClass('active');
-    });
+$(function() {
+  $('nav a[href^="/' + location.pathname.split("/")[1] + '"]').parent().addClass('active');
 });
 </script>
