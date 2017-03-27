@@ -48,16 +48,5 @@
         });
       });
  </script>
-<script>
-$(document).ready(function () {
-    $('.navigation-menu  a').click(function (e) {
-        e.preventDefault();
-        //removing the previous selected menu state
-        $('.navigation-menu').find('li.active').removeClass('active');
-        //adding the state for this parent menu
-        $(this).parents("li").addClass('active');
-    });
-});
-</script>
 </html>
 
