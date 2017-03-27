@@ -4,7 +4,7 @@
       HEDER<span class="action">A</span>
     </a>
     <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">Menu</a>
-    <nav role="navigation">
+    <nav id="nav" role="navigation">
       <ul id="js-navigation-menu" class="navigation-menu show">
         <li class="nav-link"><%= link_to 'ABOUT', page_path('about') %></li>
         <li class="nav-link"><%= link_to "PEOPLE", members_path %></li>
@@ -19,7 +19,6 @@
   </div>
 </header>
 <script>
-$(function() {
-  $('nav a[href^="/' + location.pathname.split("/")[1] + '"]').parent().addClass('active');
-});
+$(document).activeNavigation("#nav")
 </script>
+
