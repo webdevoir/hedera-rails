@@ -3,8 +3,8 @@ class Newsarticle < ApplicationRecord
   friendly_id :title, use: :slugged
 
   has_attached_file :newsarticle_pic,
-  styles: { small: "50x50#", medium: "225x150#", large: "450x300#" },
-  default_url: "/images/:style/missing.png"
+  styles: { small: "50x50#", medium: "225x150#", large: "450x300#" }
+  #default_url: "/images/:style/missing.png"
 
   has_attached_file :newsarticle_doc
 

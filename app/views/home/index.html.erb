@@ -9,7 +9,11 @@
       <% @newsarticles.each do |article| %>
         <article class="newsitem">
           <aside>
-            <%= image_tag article.newsarticle_pic.url(:small) %>
+            <% if article.newsarticle_pic? %>
+              <%= image_tag article.newsarticle_pic.url(:small) %>
+            <% else %>
+                &nbsp;
+            <% end %>
           </aside>
           <div class="content">
           <header>

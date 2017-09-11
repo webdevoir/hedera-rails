@@ -29,7 +29,9 @@
     <% end %>
   </div><!-- .content -->
   <aside>
-    <%= image_tag @newsarticle.newsarticle_pic.url(:large) %>
+    <% if @newsarticle.newsarticle_pic? %>
+      <%= image_tag @newsarticle.newsarticle_pic.url(:large) %>
+    <% end %>
   </aside>
   <% if user_signed_in? %>
     <div class="edit">

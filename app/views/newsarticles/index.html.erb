@@ -11,7 +11,9 @@
   <% @newsarticles.each do |article| %>
     <div class="news-item">
       <aside>
-        <%= image_tag article.newsarticle_pic.url(:medium) %>
+        <% if article.newsarticle_pic? %>
+          <%= image_tag article.newsarticle_pic.url(:medium) %>
+        <% end %>
       </aside>
       <div class="content">
         <h2><%= link_to article.title, newsarticle_path(article) %></h2>    
